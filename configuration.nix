@@ -241,9 +241,14 @@
   systemd.services."systemd-networkd-wait-online".enable = false;
 
   nix = {
+    package = pkgs.nixUnstable;
     settings.allowed-users = [
       "@wheel"
     ];
+    extraOptions =
+      ''
+        extra-experimental-features = nix-command flakes
+      '';
   };
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
