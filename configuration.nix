@@ -55,6 +55,16 @@
     useUserPackages = true;
     users.aleksandra = { pkgs, ...}: {
       programs = {
+			  kitty = {
+					enable = true;
+					font.name = "Fira Code";
+				  theme = "Dracula";
+					settings = {
+					  copy_on_select = "clipboard";
+						tab_title_template = "{index}: {title}";
+					};
+				};
+
         mako = {
           enable = true;
           defaultTimeout = 5000;
@@ -65,6 +75,7 @@
               anchor=bottom-right
             '';
         };
+
         mercurial = {
           enable = true;
           aliases = {
@@ -93,9 +104,11 @@
           };
         };
       };
+
       services = {
         network-manager-applet.enable = true;
       };
+
       wayland = {
         windowManager = {
           sway = {
