@@ -5,13 +5,6 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [
-    <home-manager/nixos>
-    <nixos-hardware/lenovo/thinkpad/x1/6th-gen>
-    # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-  ];
-
   boot = {
     initrd.luks.devices.root = {
       allowDiscards = true;  # enables TRIM, optional.
