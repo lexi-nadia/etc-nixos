@@ -218,6 +218,8 @@
 
   networking = {
     hostName = "mehve";
+    dhcpcd.enable = false;
+    useNetworkd = true;
 
     interfaces = {
       enp0s31f6.useDHCP = true;
@@ -233,6 +235,10 @@
     # replicates the default behaviour.
     useDHCP = false;
   };
+
+  # this keeps failing, both the binary and the finality of such state
+  # is a fallacy anyway
+  systemd.services."systemd-networkd-wait-online".enable = false;
 
   nix = {
     settings.allowed-users = [
