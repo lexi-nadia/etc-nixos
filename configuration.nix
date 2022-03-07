@@ -55,15 +55,15 @@
     useUserPackages = true;
     users.aleksandra = { pkgs, ...}: {
       programs = {
-			  kitty = {
-					enable = true;
-					font.name = "Fira Code";
-				  theme = "Dracula";
-					settings = {
-					  copy_on_select = "clipboard";
-						tab_title_template = "{index}: {title}";
-					};
-				};
+        kitty = {
+          enable = true;
+          font.name = "Fira Code";
+          theme = "Dracula";
+          settings = {
+            copy_on_select = "clipboard";
+            tab_title_template = "{index}: {title}";
+          };
+        };
 
         mako = {
           enable = true;
@@ -102,6 +102,136 @@
               "vimdiff.premerge" = "keep";
             };
           };
+        };
+        
+        waybar = {
+          enable = true;
+          style = ./waybar/style.css;
+          settings = {
+					  mainBar = {
+              height = 30;
+              modules-left = [ "sway/workspaces" "sway/mode" "sway/window" ];
+              modules-right = [ "idle_inhibitor" "pulseaudio#out" "pulseaudio#in" "network" "cpu" "memory" "temperature" "backlight" "keyboard-state" "sway/language" "battery" "tray" "clock" ];
+
+              keyboard-state = {
+                numlock = true;
+                capslock = true;
+                format = "{name} {icon}";
+                format-icons = {
+                    locked = "";
+                    unlocked = "";
+                };
+              };
+
+              "sway/workspaces" = {
+                  all-outputs = true;
+              };
+
+              "sway/mode" = {
+                  format = "<span style=\"italic\">{}</span>";
+              };
+
+              idle_inhibitor = {
+                  format = "{icon}";
+                  format-icons = {
+                      activated = "";
+                      deactivated = "";
+                  };
+              };
+
+              tray = {
+                  spacing = 10;
+                  show-passive-items = true;
+              };
+
+              clock = {
+                  format = "{:%Y-%m-%d %H:%M}";
+                  tooltip = false;
+              };
+
+              cpu = {
+                  format = "{usage}% ";
+                  tooltip = false;
+              };
+
+              memory = {
+                  format = "{}% ";
+              };
+
+              temperature = {
+                  critical-threshold = 80;
+                  format = "{temperatureC}°C {icon}";
+                  format-icons = ["" "" ""];
+              };
+
+              backlight = {
+                  format = "{percent}% {icon}";
+                  format-icons = ["" ""];
+                  on-scroll-up = "light -A 1";
+                  on-scroll-down = "light -U 1";
+              };
+
+              battery = {
+                  states = {
+                      warning = 30;
+                      critical = 15;
+                  };
+                  format = "{capacity}% {icon}";
+                  format-charging = "{capacity}% ";
+                  format-plugged = "{capacity}% ";
+                  format-alt = "{time} {icon}";
+                  format-icons = ["" "" "" "" ""];
+              };
+
+              network = {
+                  format-wifi = "{essid} ({signalStrength}%) ";
+                  format-ethernet = "{ifname}: {ipaddr}/{cidr} ";
+                  format-linked = "{ifname} (No IP) ";
+                  format-disconnected = "Disconnected ⚠";
+                  format-alt = "{ifname}: {ipaddr}/{cidr}";
+              };
+
+              "pulseaudio#out" = {
+                  format = "{volume}% {icon}";
+                  format-bluetooth = "{volume}% {icon}";
+                  format-bluetooth-muted = " {icon}";
+                  format-muted = "";
+                  format-icons = {
+                      headphone = "";
+                      hands-free = "";
+                      headset = "";
+                      phone = "";
+                      portable = "";
+                      car = "";
+                      default = ["" "" ""];
+                  };
+                  on-click = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
+                  on-click-right = "pavucontrol -t 1";
+              };
+
+              "pulseaudio#in" = {
+                  format = "{format_source}";
+                  format-bluetooth = "{format_source}";
+                  format-bluetooth-muted = "{format_source}";
+                  format-muted = "{format_source}";
+                  format-source = "{volume}% ";
+                  format-source-muted = "";
+                  format-icons = {
+                      headphone = "";
+                      hands-free = "";
+                      headset = "";
+                      phone = "";
+                      portable = "";
+                      car = "";
+                      default = ["" "" ""];
+                  };
+                  on-click = "pactl set-source-mute @DEFAULT_SOURCE@ toggle";
+                  on-click-right = "pavucontrol -t 2";
+                  on-scroll-up = "pactl set-source-volume @DEFAULT_SOURCE@ +1%";
+                  on-scroll-down = "pactl set-source-volume @DEFAULT_SOURCE@ -1%";
+              };
+            };
+					};
         };
       };
 
