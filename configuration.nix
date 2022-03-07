@@ -379,7 +379,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.aleksandra = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "video" "wheel" ];
     shell = pkgs.zsh;
   };
 }
