@@ -5,18 +5,6 @@
 { config, lib, pkgs, ... }:
 
 {
-  boot = {
-    initrd.luks.devices.root = {
-      allowDiscards = true;  # enables TRIM, optional.
-      device = "/dev/disk/by-uuid/8bb6d73a-0c15-4955-983a-7f02083be96e";
-      preLVM = true;  # we need to decrypt the physical partition before LVM mounts our logical partitions.
-    };
-    loader = {
-      efi.canTouchEfiVariables = true;
-      systemd-boot.enable = true;
-    };
-  };
-
   environment = {
     shellAliases = {
       grep = "rg";
@@ -247,8 +235,6 @@
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "discord"
   ];
-
-  powerManagement.cpuFreqGovernor = "ondemand";
 
   programs = {
     git = {
