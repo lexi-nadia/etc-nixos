@@ -217,12 +217,6 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   networking = {
-    # Open ports in the firewall.
-    # firewall.allowedTCPPorts = [ ... ];
-    # firewall.allowedUDPPorts = [ ... ];
-    # Or disable the firewall altogether.
-    # firewall.enable = false;
-
     hostName = "mehve";
 
     interfaces = {
@@ -269,7 +263,7 @@
       };
     };
 
-		light.enable = true;
+    light.enable = true;
 
     neovim = {
       enable = true;
@@ -362,9 +356,6 @@
       # Enable touchpad support (enabled default in most desktopManager).
       libinput.enable = true;
     };
-
-    # Enable the OpenSSH daemon.
-    # openssh.enable = true;
   };
 
   sound.enable = true;
