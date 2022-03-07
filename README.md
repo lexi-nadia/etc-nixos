@@ -1,2 +1,3 @@
 # etc-nixos
-my /etc/nixos dir
+
+The contents of my /etc/nixos directory, minus hardware-configuration.nix.
