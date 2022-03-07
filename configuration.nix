@@ -261,7 +261,7 @@
       viAlias = true;
       vimAlias = true;
       configure = {
-        customRC ="lua << EOF\n" + (builtins.readFile /home/aleksandra/.config/nvim/init.lua) + "EOF\n";
+        customRC ="lua << EOF\n" + (builtins.readFile ./nvim.lua) + "EOF\n";
         packages.nix.start = with pkgs.vimPlugins; [
           async-vim
           dracula-vim
