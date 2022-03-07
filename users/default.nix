@@ -152,7 +152,7 @@
                   car = "";
                   default = ["" "" ""];
               };
-              on-click = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
+              on-click = "${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle";
               on-click-right = "pavucontrol -t 1";
           };
 
@@ -172,10 +172,10 @@
                   car = "";
                   default = ["" "" ""];
               };
-              on-click = "pactl set-source-mute @DEFAULT_SOURCE@ toggle";
+              on-click = "${pkgs.pulseaudio}/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle";
               on-click-right = "pavucontrol -t 2";
-              on-scroll-up = "pactl set-source-volume @DEFAULT_SOURCE@ +1%";
-              on-scroll-down = "pactl set-source-volume @DEFAULT_SOURCE@ -1%";
+              on-scroll-up = "${pkgs.pulseaudio}/bin/pactl set-source-volume @DEFAULT_SOURCE@ +1%";
+              on-scroll-down = "${pkgs.pulseaudio}/bin/pactl set-source-volume @DEFAULT_SOURCE@ -1%";
           };
         };
       };
