@@ -1,5 +1,6 @@
 local nvim_lsp = require('lspconfig')
 
+vim.opt.expandtab = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.termguicolors = true
