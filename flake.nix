@@ -17,8 +17,8 @@
       modules = [
         nixos-hardware.nixosModules.lenovo-thinkpad-x1-6th-gen
         home-manager.nixosModules.home-manager
-				./hosts/mehve.nix
-				./configuration.nix
+        ./hosts/mehve.nix
+        ./configuration.nix
       ];
     };
   };

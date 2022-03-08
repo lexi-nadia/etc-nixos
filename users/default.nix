@@ -183,11 +183,16 @@
 
     zsh = {
       enable = true;
+			defaultKeymap = "emacs";
       enableAutosuggestions = true;
       history = {
         ignoreDups = true;
         share = true;
       };
+      envExtra =
+        ''
+          . /etc/set-environment
+        '';
       initExtra =
         ''
           autoload -U colors && colors
