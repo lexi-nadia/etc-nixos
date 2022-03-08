@@ -172,6 +172,26 @@
           run-shell ${pkgs.tmuxPlugins.dracula}/share/tmux-plugins/dracula/dracula.tmux
         '';
     };
+
+    zsh = {
+      enable = true;
+      autosuggestions.enable = true;
+      setOptions = lib.mkOptionDefault [
+        "AUTO_PUSHD"
+        "NO_BEEP"
+        "PUSHD_IGNORE_DUPS"
+      ];
+      promptInit =
+        ''
+          autoload -U colors && colors && PROMPT="%(?.%?.%{$fg_bold[red]%}%?%{$reset_color%b%}) %{$fg_bold[magenta]%}%n%{$reset_color%b%}@$fg[green]%m%{$reset_color%} %~ %D{%a %b %d %H:%M:%S}
+          \$ "
+        '';
+      interactiveShellInit =
+        ''
+          bindkey -e
+          . /etc/zinputrc
+        '';
+    };
   };
 
   services = {

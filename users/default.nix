@@ -180,27 +180,6 @@
         };
       };
     };
-
-    zsh = {
-      enable = true;
-			defaultKeymap = "emacs";
-      enableAutosuggestions = true;
-      history = {
-        ignoreDups = true;
-        share = true;
-      };
-      envExtra =
-        ''
-          . /etc/set-environment
-        '';
-      initExtra =
-        ''
-          autoload -U colors && colors
-          PROMPT="%(?.%?.%{$fg_bold[red]%}%?%{$reset_color%b%}) %{$fg_bold[magenta]%}%n%{$reset_color%b%}@$fg[green]%m%{$reset_color%} %~ %D{%a %b %d %H:%M:%S}
-          \$ "
-          setopt AUTO_PUSHD NO_BEEP PUSHD_IGNORE_DUPS
-        '';
-    };
   };
 
   services = {
