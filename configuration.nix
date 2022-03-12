@@ -196,9 +196,9 @@
   };
 
   services = {
-    keybase = {
-      enable = true;
-    };
+    gnome.gnome-keyring.enable = true;
+
+    keybase.enable = true;
 
     pipewire = {
       enable = true;
