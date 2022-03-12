@@ -19,7 +19,6 @@
       fzf
       git-annex
       htop
-      keybase
       kitty
       mako
       networkmanagerapplet
@@ -197,6 +196,10 @@
   };
 
   services = {
+    keybase = {
+      enable = true;
+    };
+
     pipewire = {
       enable = true;
       alsa.enable = true;
