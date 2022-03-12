@@ -19,6 +19,7 @@
       fzf
       git-annex
       htop
+      keybase
       kitty
       mako
       networkmanagerapplet
