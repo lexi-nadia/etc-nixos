@@ -125,7 +125,9 @@
               };
               format = "{capacity}% {icon}";
               format-charging = "{capacity}% ";
-              format-plugged = "{capacity}% ";
+              format-not-charging = "{capacity}% ";
+              format-not = "{capacity}% ";
+              format-full = "{capacity}% ";
               format-alt = "{time} {icon}";
               format-icons = ["" "" "" "" ""];
           };

@@ -29,13 +29,15 @@
       pavucontrol
       pdftk
       powerline
+      pulseaudio
       ripgrep
-      stow
+      signal-cli
       sway-contrib.grimshot
       swayidle
       swaylock
       waybar
       wget
+      wl-clipboard
       zsh-autosuggestions
     ];
   };
@@ -47,8 +49,6 @@
     roboto-mono
     roboto-slab
   ];
-
-  hardware.pulseaudio.enable = true;
 
   home-manager = {
     useGlobalPkgs = true;
@@ -133,6 +133,7 @@
           vim-html-template-literals
           vim-javascript
           vim-lsp
+          vim-nix
           vim-unimpaired
         ];
       };
@@ -195,6 +196,13 @@
   };
 
   services = {
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      pulse.enable = true;
+      wireplumber.enable = true;
+    };
+
     printing = {
       enable = true;
     };
@@ -209,13 +217,8 @@
         };
         gdm.enable = true;
       };
-
-      # Enable touchpad support (enabled default in most desktopManager).
-      libinput.enable = true;
     };
   };
-
-  sound.enable = true;
 
   system = {
     autoUpgrade = {
