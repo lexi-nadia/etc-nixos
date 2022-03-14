@@ -14,7 +14,7 @@
 
     mako = {
       enable = true;
-      defaultTimeout = 5000;
+      defaultTimeout = 10000;
       font = "Noto Sans 8";
       extraConfig =
         ''
