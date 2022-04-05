@@ -41,5 +41,6 @@
   hardware = {
     enableRedistributableFirmware = true;
     cpu.intel.updateMicrocode = true;
+    sane.enable = true;
   };
 }
