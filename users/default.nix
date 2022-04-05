@@ -208,7 +208,6 @@
             };
             "2:7:SynPS/2_Synaptics_TouchPad" = {
               natural_scroll = "enabled";
-              scroll_factor = "0.25";
             };
             "10730:258:Kinesis_Advantage2_Keyboard" = {
               xkb_layout = "us";
