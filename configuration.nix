@@ -12,14 +12,20 @@
     };
     systemPackages = with pkgs; [
       bc
+      csvkit
+      cups-filters
       discord
+      evince
       exiftool
       file
       firefox-wayland
       fzf
       git-annex
+      gnome.eog
       htop
+      imagemagick
       kitty
+      libreoffice
       mako
       networkmanagerapplet
       nodePackages.node2nix
@@ -31,6 +37,7 @@
       powerline
       pulseaudio
       ripgrep
+      sane-frontends
       signal-cli
       sway-contrib.grimshot
       swayidle
@@ -38,6 +45,7 @@
       waybar
       wget
       wl-clipboard
+      zathura
       zsh-autosuggestions
     ];
   };
@@ -196,6 +204,11 @@
   };
 
   services = {
+    avahi = {
+      enable = true;
+      nssmdns = true;
+    };
+
     gnome.gnome-keyring.enable = true;
 
     keybase.enable = true;
