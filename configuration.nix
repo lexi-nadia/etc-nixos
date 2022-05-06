@@ -9,6 +9,8 @@
     shellAliases = {
       grep = "rg";
       ls = "ls --color=auto -F --group-directories-first";
+      ygo = "/home/aleksandra/docs/ygo/bin/ygo.mjs";
+      ygo-merge = "/home/aleksandra/docs/ygo/bin/ygo.mjs";
     };
     systemPackages = with pkgs; [
       bc
@@ -29,7 +31,10 @@
       mako
       networkmanagerapplet
       nodePackages.node2nix
+      nodePackages.typescript
+      nodePackages.typescript-language-server
       nodejs
+      nushell
       pandoc
       parallel
       pavucontrol
@@ -38,10 +43,12 @@
       pulseaudio
       ripgrep
       sane-frontends
+      scribusUnstable
       signal-cli
       sway-contrib.grimshot
       swayidle
       swaylock
+      unzip
       waybar
       wget
       wl-clipboard
@@ -204,11 +211,6 @@
   };
 
   services = {
-    avahi = {
-      enable = true;
-      nssmdns = true;
-    };
-
     gnome.gnome-keyring.enable = true;
 
     keybase.enable = true;
