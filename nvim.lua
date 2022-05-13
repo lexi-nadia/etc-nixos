@@ -1,6 +1,6 @@
 local nvim_lsp = require('lspconfig')
 
-vim.opt.expandtab = true
+vim.opt.expandtab = false
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.termguicolors = true
@@ -11,6 +11,8 @@ vim.opt.autochdir = true
 vim.opt.matchpairs = '(:),{:},[:],<:>'
 vim.opt.foldmethod = 'syntax'
 vim.opt.foldenable = false
+vim.g.loaded_perl_provider = false
+vim.g.loaded_node_provider = true
 vim.g.dracula_colorterm = false
 vim.g.rustfmt_autosave = true
 
