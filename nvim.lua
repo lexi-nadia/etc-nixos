@@ -12,9 +12,11 @@ vim.opt.matchpairs = '(:),{:},[:],<:>'
 vim.opt.foldmethod = 'syntax'
 vim.opt.foldenable = false
 vim.g.loaded_perl_provider = false
-vim.g.loaded_node_provider = true
 vim.g.dracula_colorterm = false
 vim.g.rustfmt_autosave = true
+vim.g.markdown_fenced_languages = {
+  "ts=typescript"
+}
 
 vim.api.nvim_command([[autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | endif]])
 vim.api.nvim_command('filetype plugin indent on')
@@ -59,7 +61,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = {'pyright', 'rust_analyzer', 'tsserver'}
+local servers = {'denols', 'pyright', 'rust_analyzer'}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,

@@ -9,13 +9,15 @@
     shellAliases = {
       grep = "rg";
       ls = "ls --color=auto -F --group-directories-first";
-      ygo = "/home/aleksandra/docs/ygo/bin/ygo.mjs";
-      ygo-merge = "/home/aleksandra/docs/ygo/bin/ygo.mjs";
+      ygo = "/home/aleksandra/ccg/ygo/bin/ygo.mjs";
     };
     systemPackages = with pkgs; [
+      OSCAR
       bc
-      csvkit
+      cargo
+      clang
       cups-filters
+      deno
       discord
       evince
       exiftool
@@ -24,6 +26,7 @@
       fzf
       git-annex
       gnome.eog
+      gnumake
       htop
       imagemagick
       kitty
@@ -31,9 +34,7 @@
       mako
       networkmanagerapplet
       nodePackages.node2nix
-      nodePackages.typescript
-      nodePackages.typescript-language-server
-      nodejs
+      nodejs-18_x
       nushell
       pandoc
       parallel
@@ -41,10 +42,16 @@
       pdftk
       powerline
       pulseaudio
+      python3
       ripgrep
+      rust-analyzer
+      rustc
+      rustfmt
       sane-frontends
-      scribusUnstable
+      scribus
       signal-cli
+      signal-desktop
+      sqlite
       sway-contrib.grimshot
       swayidle
       swaylock
@@ -118,8 +125,8 @@
       enable = true;
       config = {
         user = {
-          email = "me@aleksbromfield.com";
-          name = "aleksandra bromfield";
+          email = "me@lexibromfield.com";
+          name = "lexi bromfield";
         };
         init = {
           defaultBranch = "main";
