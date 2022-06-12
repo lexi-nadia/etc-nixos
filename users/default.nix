@@ -219,7 +219,7 @@
               pos = "1920 120";
               bg = "$HOME/img/wallpaper.jpg center";
             };
-            HDMI-A-1 = {
+            DP-1 = {
               pos = "0 0";
               bg = "$HOME/img/wallpaper2.jpg fill";
             };
@@ -235,6 +235,7 @@
             }
           ];
           focus = {
+            followMouse = false;
             mouseWarping = false;
           };
           floating = {
@@ -253,6 +254,22 @@
             "${modifier}+Shift+Return" = "exec firefox";
             "${modifier}+z" = "exec swaylock -f -c 000000";
             "${modifier}+Shift+z" = "exec systemctl suspend";
+
+            # Override workspace switch keys to maintain separate workspaces
+            "${modifier}+1" = "[workspace=1]  move workspace to output current; workspace number 1";
+            "${modifier}+2" = "[workspace=2]  move workspace to output current; workspace number 2";
+            "${modifier}+3" = "[workspace=3]  move workspace to output current; workspace number 3";
+            "${modifier}+4" = "[workspace=1]  move workspace to output current; workspace number 4";
+            "${modifier}+5" = "[workspace=5]  move workspace to output current; workspace number 5";
+            "${modifier}+6" = "[workspace=6]  move workspace to output current; workspace number 6";
+            "${modifier}+7" = "[workspace=7]  move workspace to output current; workspace number 7";
+            "${modifier}+8" = "[workspace=8]  move workspace to output current; workspace number 8";
+            "${modifier}+9" = "[workspace=9]  move workspace to output current; workspace number 9";
+            "${modifier}+0" = "[workspace=10]  move workspace to output current; workspace number 10";
+
+            # Focus the other output
+            "${modifier}+bracketleft" = "focus output left";
+            "${modifier}+bracketright" = "focus output right";
 
             # Adjust volume
             "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +10%";
