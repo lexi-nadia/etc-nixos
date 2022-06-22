@@ -21,5 +21,13 @@
         ./configuration.nix
       ];
     };
+    nixosConfigurations.umi = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        home-manager.nixosModules.home-manager
+        ./hosts/umi.nix
+        ./configuration.nix
+      ];
+    };
   };
 }

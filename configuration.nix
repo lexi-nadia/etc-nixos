@@ -53,6 +53,7 @@
       signal-cli
       signal-desktop
       sqlite
+      steam
       sway-contrib.grimshot
       swayidle
       swaylock
@@ -73,6 +74,10 @@
     roboto-slab
   ];
 
+  hardware = {
+    sane.enable = true;
+  };
+
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
@@ -83,7 +88,6 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   networking = {
-    hostName = "mehve";
     dhcpcd.enable = false;
     useNetworkd = true;
 
@@ -119,6 +123,7 @@
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "discord"
+    "steam"
   ];
 
   programs = {

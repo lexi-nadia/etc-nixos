@@ -28,7 +28,7 @@
       device = "/dev/disk/by-uuid/59D4-DEAB";
       fsType = "vfat";
     };
-	};
+  };
 
   swapDevices = [
     { device = "/dev/disk/by-uuid/4fe7822d-9760-4142-a04a-a02988838fab"; }
@@ -41,6 +41,9 @@
   hardware = {
     enableRedistributableFirmware = true;
     cpu.intel.updateMicrocode = true;
-    sane.enable = true;
+  };
+
+  networking = {
+    hostName = "mehve";
   };
 }
