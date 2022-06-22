@@ -10,6 +10,7 @@
       grep = "rg";
       ls = "ls --color=auto -F --group-directories-first";
       ygo = "/home/aleksandra/ccg/ygo/bin/ygo.mjs";
+      ygo-rs = "/home/aleksandra/repos/ygo/target/release/ygo";
     };
     systemPackages = with pkgs; [
       OSCAR
@@ -219,8 +220,6 @@
 
   services = {
     gnome.gnome-keyring.enable = true;
-
-    keybase.enable = true;
 
     pipewire = {
       enable = true;
