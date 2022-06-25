@@ -9,8 +9,8 @@
     shellAliases = {
       grep = "rg";
       ls = "ls --color=auto -F --group-directories-first";
-      ygo = "/home/aleksandra/ccg/ygo/bin/ygo.mjs";
-      ygo-rs = "/home/aleksandra/repos/ygo/target/release/ygo";
+      ygo = "/home/lexi/ccg/ygo/bin/ygo.mjs";
+      ygo-rs = "/home/lexi/repos/ygo/target/release/ygo";
     };
     systemPackages = with pkgs; [
       OSCAR
@@ -76,7 +76,7 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.aleksandra.imports = [ ./users/aleksandra.nix ];
+    users.lexi.imports = [ ./users/lexi.nix ];
     users.root.imports = [ ./users/root.nix ];
   };
 
@@ -238,7 +238,7 @@
       displayManager = {
         autoLogin = {
           enable = true;
-          user = "aleksandra";
+          user = "lexi";
         };
         gdm.enable = true;
       };
@@ -262,7 +262,7 @@
   time.timeZone = "America/New_York";
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.aleksandra = {
+  users.users.lexi = {
     isNormalUser = true;
     extraGroups = [ "video" "wheel" ];
     shell = pkgs.zsh;

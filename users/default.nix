@@ -29,8 +29,8 @@
         vi = "vimdiff";
         vim = "vimdiff";
       };
-      userEmail = "me@aleksbromfield.com";
-      userName = "aleksandra";
+      userEmail = "me@lexibromfield.com";
+      userName = "lexi";
       extraConfig = {
         ui = {
           merge = "vimdiff";
