@@ -1,6 +1,10 @@
 { lib, pkgs, ...}:
 
 {
+  home = {
+    stateVersion = "21.11";
+  };
+
   programs = {
     kitty = {
       enable = true;
