@@ -227,6 +227,10 @@
               pos = "0 0";
               bg = "$HOME/img/wallpaper2.jpg fill";
             };
+            DP-2 = {
+              pos = "1920 0";
+              bg = "$HOME/img/wallpaper.jpg center";
+            };
           };
           workspaceOutputAssign = [
             { output = "eDP-1"; workspace = "-1"; }

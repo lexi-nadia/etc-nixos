@@ -9,6 +9,7 @@
     shellAliases = {
       grep = "rg";
       ls = "ls --color=auto -F --group-directories-first";
+      nrs = "nixos-rebuild switch --use-remote-sudo";
       ygo = "/home/lexi/ccg/ygo/bin/ygo.mjs";
       ygo-rs = "/home/lexi/repos/ygo/target/release/ygo";
     };
@@ -17,6 +18,7 @@
       bc
       cargo
       clang
+      cockatrice
       cups-filters
       deno
       discord
@@ -52,6 +54,7 @@
       scribus
       signal-cli
       signal-desktop
+      spotify
       sqlite
       steam
       sway-contrib.grimshot
@@ -123,7 +126,11 @@
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "discord"
+    "spotify"
+    "spotify-unwrapped"
     "steam"
+    "steam-original"
+    "steam-runtime"
   ];
 
   programs = {
@@ -169,6 +176,10 @@
 
     ssh = {
       startAgent = true;
+    };
+
+    steam = {
+      enable = true;
     };
 
     sway = {
