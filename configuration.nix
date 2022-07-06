@@ -8,6 +8,7 @@
   environment = {
     shellAliases = {
       grep = "rg";
+      icat = "kitty +kitten icat";
       ls = "ls --color=auto -F --group-directories-first";
       nrs = "nixos-rebuild switch --use-remote-sudo";
       ygo = "/home/lexi/ccg/ygo/bin/ygo.mjs";
@@ -35,6 +36,8 @@
       kitty
       libreoffice
       mako
+      mullvad
+      mullvad-vpn
       networkmanagerapplet
       nodePackages.node2nix
       nodejs-18_x
@@ -237,6 +240,8 @@
 
   services = {
     gnome.gnome-keyring.enable = true;
+
+    mullvad-vpn.enable = true;
 
     pipewire = {
       enable = true;
