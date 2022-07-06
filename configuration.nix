@@ -44,6 +44,7 @@
       pavucontrol
       pdftk
       powerline
+      proton-caller
       pulseaudio
       python3
       ripgrep
