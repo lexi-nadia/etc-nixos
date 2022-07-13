@@ -1,6 +1,6 @@
 let
-	flake = builtins.getFlake (toString ./.);
-	nixpkgs = import <nixpkgs> { };
+  flake = builtins.getFlake (toString ./.);
+  nixpkgs = import <nixpkgs> { };
 in
 { inherit flake; }
 // flake

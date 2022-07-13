@@ -1,7 +1,7 @@
 { lib, pkgs, ...}:
 
 {
-	imports = [
-		./default.nix
-	];
+  imports = [
+    ./default.nix
+  ];
 }
