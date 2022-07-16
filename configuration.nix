@@ -35,6 +35,7 @@
       imagemagick
       kitty
       libreoffice
+      lutris
       mako
       mullvad
       mullvad-vpn
@@ -47,7 +48,6 @@
       pavucontrol
       pdftk
       powerline
-      proton-caller
       pulseaudio
       python3
       ripgrep
