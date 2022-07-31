@@ -51,6 +51,7 @@
       pulseaudio
       python3
       ripgrep
+      rofi-wayland
       rust-analyzer
       rustc
       rustfmt

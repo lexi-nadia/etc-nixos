@@ -205,7 +205,7 @@
             size = 8.0;
           };
           input = {
-            "1:1:AT_Translated_Set_2_keyboard" = {
+            "type:keyboard" = {
               xkb_layout = "us";
               xkb_variant = "altgr-intl";
               xkb_options = "caps:swapescape";
@@ -214,8 +214,7 @@
               natural_scroll = "enabled";
             };
             "10730:258:Kinesis_Advantage2_Keyboard" = {
-              xkb_layout = "us";
-              xkb_variant = "altgr-intl";
+              xkb_options = "caps:capslock";
             };
           };
           output = {
@@ -256,6 +255,7 @@
           window = {
             titlebar = true;
           };
+          menu = "${pkgs.rofi-wayland}/bin/rofi -show drun -modi drun";
           keybindings = let
             modifier = "Mod4";
           in lib.mkOptionDefault {
