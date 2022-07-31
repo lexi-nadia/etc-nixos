@@ -22,7 +22,7 @@
       cockatrice
       cups-filters
       deno
-      discord
+      (discord.override { nss = nss_latest; })
       evince
       exiftool
       file
