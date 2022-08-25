@@ -7,10 +7,12 @@
 {
   environment = {
     shellAliases = {
+      diff = "diff --color";
       grep = "rg";
-      icat = "kitty +kitten icat";
+      less = "less -n";
       ls = "ls --color=auto -F --group-directories-first";
       nrs = "nixos-rebuild switch --use-remote-sudo";
+      ps = "ps -eHo 'pid,stime,euser,cmd'";
       ygo = "/home/lexi/ccg/ygo/bin/ygo.mjs";
       ygo-rs = "/home/lexi/repos/ygo/target/release/ygo";
     };
@@ -33,16 +35,17 @@
       gnumake
       htop
       imagemagick
-      kitty
       libreoffice
       lutris
       mako
       mullvad
       mullvad-vpn
       networkmanagerapplet
+      nixpkgs-fmt
       nodePackages.node2nix
       nodejs-18_x
       nushell
+      nvimpager
       pandoc
       parallel
       pavucontrol
@@ -51,6 +54,7 @@
       pulseaudio
       python3
       ripgrep
+      rnix-lsp
       rofi-wayland
       rust-analyzer
       rustc
@@ -62,11 +66,13 @@
       spotify
       sqlite
       steam
+      sumneko-lua-language-server
       sway-contrib.grimshot
       swayidle
       swaylock
       unzip
       waybar
+      wezterm
       wget
       wl-clipboard
       zathura
@@ -139,44 +145,12 @@
   ];
 
   programs = {
-    git = {
-      enable = true;
-      config = {
-        user = {
-          email = "me@lexibromfield.com";
-          name = "lexi bromfield";
-        };
-        init = {
-          defaultBranch = "main";
-        };
-        merge = {
-          conflictstyle = "diff3";
-        };
-      };
-    };
 
     light.enable = true;
 
     neovim = {
       enable = true;
       defaultEditor = true;
-      viAlias = true;
-      vimAlias = true;
-      configure = {
-        customRC ="lua << EOF\n" + (builtins.readFile ./nvim.lua) + "EOF\n";
-        packages.nix.start = with pkgs.vimPlugins; [
-          async-vim
-          dracula-vim
-          nvim-lspconfig
-          rust-vim
-          vim-dirdiff
-          vim-html-template-literals
-          vim-javascript
-          vim-lsp
-          vim-nix
-          vim-unimpaired
-        ];
-      };
     };
 
     ssh = {
@@ -189,33 +163,6 @@
 
     sway = {
       enable = true;
-    };
-
-    tmux = {
-      enable = true;
-      aggressiveResize = true;
-      baseIndex = 1;
-      clock24 = true;
-      escapeTime = 10;
-      historyLimit = 131072;
-      newSession = true;
-      shortcut = "a";
-      terminal = "tmux-256color";
-      plugins = with pkgs.tmuxPlugins; [
-        sensible
-      ];
-      extraConfig =
-        ''
-          set -g set-titles on
-          set -g set-titles-string "#h - #I:#W"
-          bind-key C-d kill-window \; detach
-          set-option -g renumber-windows on
-          set -g @dracula-plugins "battery network"
-          set -g @dracula-show-powerline true
-          set -g @dracula-military-time true 
-          set -g @dracula-show-left-icon 💙
-          run-shell ${pkgs.tmuxPlugins.dracula}/share/tmux-plugins/dracula/dracula.tmux
-        '';
     };
 
     zsh = {
