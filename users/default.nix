@@ -107,6 +107,9 @@
       package = pkgs.rofi-wayland;
       terminal = "${pkgs.wezterm}/bin/wezterm";
       theme = "solarized_alternate";
+      extraConfig = {
+        modi = "run,drun,ssh";
+      };
     };
 
     waybar = {
@@ -351,23 +354,24 @@
           };
           output = {
             eDP-1 = {
-              pos = "1920 120";
-              bg = "$HOME/img/wallpaper.jpg center";
-            };
-            DP-1 = {
+              #pos = "1920 120";
               pos = "0 0";
-              bg = "$HOME/img/wallpaper2.jpg fill";
-            };
-            DP-2 = {
-              pos = "1920 0";
               bg = "$HOME/img/wallpaper.jpg center";
             };
+            #DP-1 = {
+            #  pos = "0 0";
+            #  bg = "$HOME/img/wallpaper2.jpg fill";
+            #};
+            #DP-2 = {
+            #  pos = "1920 0";
+            #  bg = "$HOME/img/wallpaper.jpg center";
+            #};
           };
-          workspaceOutputAssign = [
-            { output = "eDP-1"; workspace = "-1"; }
-            { output = "DP-1"; workspace = "-2"; }
-            { output = "DP-2"; workspace = "-3"; }
-          ];
+          #workspaceOutputAssign = [
+          #  { output = "eDP-1"; workspace = "-1"; }
+          #  { output = "DP-1"; workspace = "-2"; }
+          #  { output = "DP-2"; workspace = "-3"; }
+          #];
           bars = [ ];
           focus = {
             followMouse = false;

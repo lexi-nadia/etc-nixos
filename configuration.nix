@@ -20,6 +20,7 @@
       OSCAR
       bc
       cargo
+      chromium
       clang
       cockatrice
       cups-filters
@@ -145,7 +146,6 @@
   ];
 
   programs = {
-
     light.enable = true;
 
     neovim = {
@@ -188,6 +188,8 @@
   };
 
   services = {
+    flatpak.enable = true;
+
     gnome.gnome-keyring.enable = true;
 
     mullvad-vpn.enable = true;
@@ -238,4 +240,6 @@
     extraGroups = [ "video" "wheel" ];
     shell = pkgs.zsh;
   };
+
+  xdg.portal.enable = true;
 }
