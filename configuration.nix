@@ -39,6 +39,7 @@
       libreoffice
       lutris
       mako
+      mono
       mullvad
       mullvad-vpn
       networkmanagerapplet

@@ -372,7 +372,12 @@
           #  { output = "DP-1"; workspace = "-2"; }
           #  { output = "DP-2"; workspace = "-3"; }
           #];
-          bars = [ ];
+          bars = [
+            {
+              position = "top";
+              command = "${pkgs.waybar}/bin/waybar";
+            }
+          ];
           focus = {
             followMouse = false;
             mouseWarping = false;
