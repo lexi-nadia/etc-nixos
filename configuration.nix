@@ -18,6 +18,7 @@
     };
     systemPackages = with pkgs; [
       OSCAR
+      android-tools
       bc
       cargo
       chromium
@@ -124,7 +125,7 @@
 
   # this keeps failing, both the binary and the finality of such state
   # is a fallacy anyway
-  systemd.services."systemd-networkd-wait-online".enable = false;
+  systemd.network.wait-online.enable = false;
 
   nix = {
     package = pkgs.nixUnstable;
@@ -143,6 +144,7 @@
     "spotify-unwrapped"
     "steam"
     "steam-original"
+    "steam-run"
     "steam-runtime"
   ];
 
@@ -204,6 +206,10 @@
 
     printing = {
       enable = true;
+    };
+
+    udev = {
+      packages = [ pkgs.android-udev-rules ];
     };
 
     xserver = {

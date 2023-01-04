@@ -3,6 +3,12 @@
 {
   home = {
     stateVersion = "21.11";
+
+    file = {
+      ".config/nvim/init.lua" = {
+        source = ../nvim.lua;
+      };
+    };
   };
 
   programs = {
@@ -99,7 +105,7 @@
         vim-unimpaired
         vim-wayland-clipboard
       ];
-      extraConfig = "lua << EOF\n" + (builtins.readFile ../nvim.lua) + "EOF\n";
+      #extraConfig = "lua << EOF\n" + (builtins.readFile ../nvim.lua) + "EOF\n";
     };
 
     rofi = {

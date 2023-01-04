@@ -35,11 +35,11 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", bufopts)
 	vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", bufopts)
 	vim.keymap.set("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", bufopts)
-	vim.keymap.set("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", bufopts)
+	vim.keymap.set("n", "<space>f", "<cmd>lua vim.lsp.buf.format { async = true }<CR>", bufopts)
 
 	vim.api.nvim_command("augroup LSP")
 	vim.api.nvim_command("autocmd!")
-	if client.resolved_capabilities.document_highlight then
+	if client.server_capabilities.document_highlight then
 		vim.api.nvim_command("autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()")
 		vim.api.nvim_command("autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()")
 		vim.api.nvim_command("autocmd CursorMoved <buffer> lua vim.lsp.util.buf_clear_references()")
