@@ -55,6 +55,7 @@
       pdftk
       powerline
       pulseaudio
+      pv
       python3
       ripgrep
       rnix-lsp
