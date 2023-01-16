@@ -364,14 +364,14 @@
               pos = "0 0";
               bg = "$HOME/img/wallpaper.jpg center";
             };
-            #DP-1 = {
-            #  pos = "0 0";
-            #  bg = "$HOME/img/wallpaper2.jpg fill";
-            #};
-            #DP-2 = {
-            #  pos = "1920 0";
-            #  bg = "$HOME/img/wallpaper.jpg center";
-            #};
+            "Acer Technologies Acer XFA240 0x0000F386" = {
+              pos = "0 0";
+              bg = "$HOME/img/wallpaper2.jpg fill";
+            };
+            "Acer Technologies Acer XFA240 0x00009392" = {
+              pos = "1920 0";
+              bg = "$HOME/img/wallpaper.jpg center";
+            };
           };
           #workspaceOutputAssign = [
           #  { output = "eDP-1"; workspace = "-1"; }

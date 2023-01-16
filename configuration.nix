@@ -75,6 +75,7 @@
       swayidle
       swaylock
       unzip
+      vlc
       waybar
       wezterm
       wget
@@ -144,6 +145,7 @@
     "spotify"
     "spotify-unwrapped"
     "steam"
+    "steam-run"
     "steam-original"
     "steam-run"
     "steam-runtime"
@@ -211,6 +213,11 @@
 
     udev = {
       packages = [ pkgs.android-udev-rules ];
+    };
+
+    openssh = {
+      enable = true;
+      allowSFTP = true;
     };
 
     xserver = {
