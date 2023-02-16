@@ -88,6 +88,10 @@
   fonts.fonts = with pkgs; [
     fira-code
     font-awesome
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    noto-fonts-extra
     roboto
     roboto-mono
     roboto-slab
@@ -104,7 +108,17 @@
     users.root.imports = [ ./users/root.nix ];
   };
 
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+
+    inputMethod = {
+      enabled = "fcitx5";
+      fcitx5.addons = with pkgs; [
+        fcitx5-mozc
+        fcitx5-gtk
+      ];
+    };
+  };
 
   networking = {
     dhcpcd.enable = false;
