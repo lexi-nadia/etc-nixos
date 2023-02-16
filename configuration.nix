@@ -26,7 +26,6 @@
       cockatrice
       cups-filters
       deno
-      (discord.override { nss = nss_latest; })
       evince
       exiftool
       file
@@ -67,7 +66,6 @@
       scribus
       signal-cli
       signal-desktop
-      spotify
       sqlite
       steam
       sumneko-lua-language-server
@@ -155,9 +153,6 @@
   };
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "discord"
-    "spotify"
-    "spotify-unwrapped"
     "steam"
     "steam-run"
     "steam-original"
