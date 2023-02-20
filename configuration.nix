@@ -19,6 +19,7 @@
     systemPackages = with pkgs; [
       OSCAR
       android-tools
+      anki-bin
       bc
       cargo
       chromium
@@ -35,6 +36,7 @@
       gnome.eog
       gnumake
       htop
+      hydra-check
       imagemagick
       libreoffice
       lutris
