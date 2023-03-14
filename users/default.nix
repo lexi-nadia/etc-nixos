@@ -394,6 +394,7 @@
               { app_id = "eog"; }
               { app_id = "^$"; }
               { title = "^Picture in picture$"; }
+              { title = "Firefox — Sharing Indicator"; }
             ];
           };
           menu = "${pkgs.rofi-wayland}/bin/rofi -show run";
