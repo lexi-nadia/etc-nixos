@@ -20,6 +20,7 @@
       OSCAR
       android-tools
       anki-bin
+      audacity
       bc
       cargo
       chromium
