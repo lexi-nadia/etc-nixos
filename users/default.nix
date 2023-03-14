@@ -29,24 +29,6 @@
       };
     };
 
-    mako = {
-      enable = true;
-      defaultTimeout = 10000;
-      font = "Noto Sans 8";
-      # https://github.com/altercation/solarized#the-values
-      backgroundColor = "#002B36";
-      textColor = "#839496";
-      borderColor = "#073642";
-      extraConfig =
-        ''
-          [urgency=high]
-          text-color=#CB4B16
-
-          [app-name="discord"]
-          anchor=bottom-right
-        '';
-    };
-
     mercurial = {
       enable = true;
       aliases = {
@@ -306,6 +288,24 @@
   };
 
   services = {
+    mako = {
+      enable = true;
+      defaultTimeout = 10000;
+      font = "Noto Sans 8";
+      # https://github.com/altercation/solarized#the-values
+      backgroundColor = "#002B36";
+      textColor = "#839496";
+      borderColor = "#073642";
+      extraConfig =
+        ''
+          [urgency=high]
+          text-color=#CB4B16
+
+          [app-name="discord"]
+          anchor=bottom-right
+        '';
+    };
+
     network-manager-applet.enable = true;
   };
 
