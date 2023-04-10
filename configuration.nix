@@ -26,52 +26,44 @@
       chromium
       clang
       cockatrice
-      cups-filters
       deno
       evince
       exiftool
       file
-      firefox-wayland
+      firefox
       fzf
       git-annex
       gnome.eog
-      gnumake
       htop
       hydra-check
       imagemagick
       libreoffice
-      lutris
-      mako
-      mono
       mullvad
       mullvad-vpn
       networkmanagerapplet
       nixpkgs-fmt
       nodePackages.node2nix
-      nodejs-18_x
+      nodejs
       nushell
-      nvimpager
       pandoc
       parallel
       pavucontrol
       pdftk
-      powerline
       pulseaudio
       pv
       python3
       ripgrep
+      rlwrap
       rnix-lsp
       rofi-wayland
       rust-analyzer
       rustc
       rustfmt
-      sane-frontends
       scribus
       signal-cli
       signal-desktop
       sqlite
       steam
-      sumneko-lua-language-server
       sway-contrib.grimshot
       swayidle
       swaylock
@@ -79,7 +71,6 @@
       vlc
       waybar
       wezterm
-      wget
       wl-clipboard
       zathura
       zsh-autosuggestions
@@ -97,10 +88,6 @@
     roboto-mono
     roboto-slab
   ];
-
-  hardware = {
-    sane.enable = true;
-  };
 
   home-manager = {
     useGlobalPkgs = true;
@@ -123,26 +110,19 @@
 
   networking = {
     dhcpcd.enable = false;
-    useNetworkd = true;
-
-    interfaces = {
-      enp0s31f6.useDHCP = true;
-      wlp4s0.useDHCP = true;
-    };
-
     networkmanager = {
       enable = true;
     };
-
-    # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-    # Per-interface useDHCP will be mandatory in the future, so this generated config
-    # replicates the default behaviour.
-    useDHCP = false;
   };
 
   # this keeps failing, both the binary and the finality of such state
   # is a fallacy anyway
-  systemd.network.wait-online.enable = false;
+  systemd = {
+    network = {
+      enable = true;
+      wait-online.enable = false;
+    };
+  };
 
   nix = {
     package = pkgs.nixUnstable;
@@ -157,7 +137,6 @@
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "steam"
-    "steam-run"
     "steam-original"
     "steam-run"
     "steam-runtime"
@@ -175,13 +154,9 @@
       startAgent = true;
     };
 
-    steam = {
-      enable = true;
-    };
-
-    sway = {
-      enable = true;
-    };
+    steam.enable = true;
+    sway.enable = true;
+    xwayland.enable = true;
 
     zsh = {
       enable = true;
@@ -256,7 +231,7 @@
     # this value at the release version of the first install of this system.
     # Before changing this value read the documentation for this option
     # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-    stateVersion = "21.11"; # Did you read the comment?
+    stateVersion = "22.11"; # Did you read the comment?
   };
 
   time.timeZone = "America/New_York";

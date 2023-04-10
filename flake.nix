@@ -9,22 +9,24 @@
   };
 
   outputs = { self, nixpkgs, nixos-hardware, home-manager }: {
-    nixosConfigurations.mehve = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        nixos-hardware.nixosModules.lenovo-thinkpad-x1-6th-gen
-        home-manager.nixosModules.home-manager
-        ./hosts/mehve.nix
-        ./configuration.nix
-      ];
-    };
-    nixosConfigurations.umi = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        home-manager.nixosModules.home-manager
-        ./hosts/umi.nix
-        ./configuration.nix
-      ];
+    nixosConfigurations = {
+      mehve = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          nixos-hardware.nixosModules.lenovo-thinkpad-x1-6th-gen
+          home-manager.nixosModules.home-manager
+          ./hosts/mehve.nix
+          ./configuration.nix
+        ];
+      };
+      umi = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          home-manager.nixosModules.home-manager
+          ./hosts/umi.nix
+          ./configuration.nix
+        ];
+      };
     };
   };
 }

@@ -2,7 +2,7 @@
 
 {
   home = {
-    stateVersion = "21.11";
+    stateVersion = "23.05";
 
     file = {
       ".config/nvim/init.lua" = {
@@ -102,10 +102,6 @@
 
     waybar = {
       enable = true;
-      systemd = {
-        enable = true;
-        target = "sway-session.target";
-      };
       style = ../waybar-style.css;
       settings = {
         mainBar = {
@@ -413,7 +409,6 @@
                 command = "floating disable";
               }
             ];
-            titlebar = true;
           };
           keybindings =
             let
