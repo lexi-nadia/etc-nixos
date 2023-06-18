@@ -333,7 +333,9 @@
       sway = {
         enable = true;
         package = null;
-        systemdIntegration = true;
+        systemd = {
+          enable = true;
+        };
         config = {
           modifier = "Mod4";
           terminal = "${pkgs.wezterm}/bin/wezterm";
