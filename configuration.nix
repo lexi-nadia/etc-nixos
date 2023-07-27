@@ -6,16 +6,6 @@
 
 {
   environment = {
-    shellAliases = {
-      diff = "diff --color";
-      grep = "rg";
-      less = "less -n";
-      ls = "ls --color=auto -F --group-directories-first";
-      nrs = "nixos-rebuild switch --use-remote-sudo";
-      ps = "ps -eHo 'pid,stime,euser,cmd'";
-      ygo = "/home/lexi/ccg/ygo/bin/ygo.mjs";
-      ygo-rs = "/home/lexi/repos/ygo/target/release/ygo";
-    };
     systemPackages = with pkgs; [
       OSCAR
       android-tools
@@ -41,6 +31,7 @@
       mullvad
       mullvad-vpn
       networkmanagerapplet
+      nix-tree
       nixpkgs-fmt
       nodePackages.node2nix
       nodejs
@@ -73,7 +64,6 @@
       wezterm
       wl-clipboard
       zathura
-      zsh-autosuggestions
     ];
   };
 
@@ -110,13 +100,9 @@
 
   networking = {
     dhcpcd.enable = false;
-    networkmanager = {
-      enable = true;
-    };
+    networkmanager.enable = true;
   };
 
-  # this keeps failing, both the binary and the finality of such state
-  # is a fallacy anyway
   systemd = {
     network = {
       enable = true;
@@ -131,7 +117,7 @@
     ];
     extraOptions =
       ''
-        extra-experimental-features = nix-command flakes
+        extra-experimental-features = ca-derivations flakes nix-command repl-flake
       '';
   };
 
@@ -143,6 +129,57 @@
   ];
 
   programs = {
+    fish = {
+      enable = true;
+      shellAbbrs = {
+        diff = "diff --color";
+        grep = "rg";
+        less = "less -n";
+        ls = "ls --color=auto -F --group-directories-first";
+        nrs = "nixos-rebuild switch --use-remote-sudo";
+        ps = "ps -eHo 'pid,stime,euser,cmd'";
+        ygo = "/home/lexi/ccg/ygo/bin/ygo.mjs";
+        ygo-rs = "/home/lexi/repos/ygo/target/release/ygo";
+      };
+      interactiveShellInit =
+        ''
+          set -g fish_greeting
+        '';
+      promptInit =
+        ''
+          function fish_prompt --description 'Write out the prompt'
+            set -l last_status $status
+            set -l normal (set_color normal)
+            set -l status_color (set_color brgreen)
+            set -l cwd_color (set_color $fish_color_cwd)
+            set -l vcs_color (set_color brpurple)
+            set -l prompt_status ""
+
+            # Since we display the prompt on a new line allow the directory names to be longer.
+            set -q fish_prompt_pwd_dir_length
+            or set -lx fish_prompt_pwd_dir_length 0
+
+            # Color the prompt differently when we're root
+            set -l suffix '❯'
+            if functions -q fish_is_root_user; and fish_is_root_user
+                if set -q fish_color_cwd_root
+                    set cwd_color (set_color $fish_color_cwd_root)
+                end
+                set suffix '#'
+            end
+
+            # Color the prompt in red on error
+            if test $last_status -ne 0
+                set status_color (set_color $fish_color_error)
+                set prompt_status $status_color "[" $last_status "]" $normal
+            end
+
+            echo -s (prompt_login) ' ' $cwd_color (prompt_pwd) $vcs_color (fish_vcs_prompt) $normal ' ' $prompt_status
+            echo -n -s $status_color $suffix ' ' $normal
+          end
+        '';
+    };
+
     light.enable = true;
 
     neovim = {
@@ -157,33 +194,21 @@
     steam.enable = true;
     sway.enable = true;
     xwayland.enable = true;
-
-    zsh = {
-      enable = true;
-      autosuggestions.enable = true;
-      setOptions = lib.mkOptionDefault [
-        "AUTO_PUSHD"
-        "NO_BEEP"
-        "PUSHD_IGNORE_DUPS"
-      ];
-      promptInit =
-        ''
-          autoload -U colors && colors && PROMPT="%(?.%?.%{$fg_bold[red]%}%?%{$reset_color%b%}) %{$fg_bold[magenta]%}%n%{$reset_color%b%}@$fg[green]%m%{$reset_color%} %~ %D{%a %b %d %H:%M:%S}
-          \$ "
-        '';
-      interactiveShellInit =
-        ''
-          bindkey -e
-          . /etc/zinputrc
-          hash -d nix=/etc/nixos
-        '';
-    };
   };
 
   services = {
-    flatpak.enable = true;
-
     gnome.gnome-keyring.enable = true;
+
+    greetd = {
+      enable = true;
+      settings = rec {
+        initial_session = {
+          command = "${pkgs.sway}/bin/sway";
+          user = "lexi";
+        };
+        default_session = initial_session;
+      };
+    };
 
     mullvad-vpn.enable = true;
 
@@ -194,9 +219,7 @@
       wireplumber.enable = true;
     };
 
-    printing = {
-      enable = true;
-    };
+    printing.enable = true;
 
     udev = {
       packages = [ pkgs.android-udev-rules ];
@@ -205,18 +228,6 @@
     openssh = {
       enable = true;
       allowSFTP = true;
-    };
-
-    xserver = {
-      enable = true;
-
-      displayManager = {
-        autoLogin = {
-          enable = true;
-          user = "lexi";
-        };
-        gdm.enable = true;
-      };
     };
   };
 
@@ -240,7 +251,7 @@
   users.users.lexi = {
     isNormalUser = true;
     extraGroups = [ "video" "wheel" ];
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
   };
 
   xdg.portal.enable = true;
