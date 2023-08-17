@@ -347,13 +347,12 @@
             "type:keyboard" = {
               xkb_layout = "us";
               xkb_variant = "altgr-intl";
-              xkb_options = "caps:swapescape";
             };
             "type:touchpad" = {
               natural_scroll = "enabled";
             };
-            "10730:258:Kinesis_Advantage2_Keyboard" = {
-              xkb_options = "caps:capslock";
+            "1:1:AT_Translated_Set_2_keyboard" = {
+              xkb_options = "caps:swapescape";
             };
           };
           output = {
