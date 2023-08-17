@@ -370,11 +370,20 @@
               bg = "$HOME/img/wallpaper.jpg center";
             };
           };
-          #workspaceOutputAssign = [
-          #  { output = "eDP-1"; workspace = "-1"; }
-          #  { output = "DP-1"; workspace = "-2"; }
-          #  { output = "DP-2"; workspace = "-3"; }
-          #];
+          workspaceOutputAssign = [
+            {
+              output = "eDP-1";
+              workspace = "-1";
+            }
+            {
+              output = "Acer Technologies Acer XFA240 0x0000F386";
+              workspace = "-2";
+            }
+            {
+              output = "Acer Technologies Acer XFA240 0x00009392";
+              workspace = "-3";
+            }
+          ];
           bars = [
             {
               position = "top";
