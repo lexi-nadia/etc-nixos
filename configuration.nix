@@ -12,6 +12,7 @@
       anki-bin
       audacity
       bc
+      bsnes-hd
       cargo
       chromium
       clang
@@ -21,6 +22,7 @@
       exiftool
       file
       firefox
+      flips
       fzf
       git-annex
       gnome.eog
