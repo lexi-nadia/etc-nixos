@@ -418,6 +418,10 @@
                 criteria = { title = "nm-tray"; };
                 command = "floating disable";
               }
+              {
+                criteria = { title = "Firefox — Sharing Indicator"; };
+                command = "no_focus";
+              }
             ];
           };
           keybindings =
