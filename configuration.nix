@@ -69,7 +69,7 @@
     ];
   };
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     fira-code
     font-awesome
     noto-fonts
