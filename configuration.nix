@@ -138,6 +138,7 @@
         grep = "rg";
         less = "less -n";
         ls = "ls --color=auto -F --group-directories-first";
+        nfu = "nix flake update";
         nrs = "nixos-rebuild switch --use-remote-sudo";
         ps = "ps -eHo 'pid,stime,euser,cmd'";
         ygo = "/home/lexi/ccg/ygo/bin/ygo.mjs";
