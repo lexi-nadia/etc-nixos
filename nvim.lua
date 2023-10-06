@@ -56,7 +56,7 @@ nvim_lsp.denols.setup {
 		debounce_text_changes = 150,
 	},
 }
-nvim_lsp.pyright.setup {
+nvim_lsp.pylsp.setup {
 	on_attach = on_attach,
 	flags = {
 		debounce_text_changes = 150,

@@ -74,7 +74,6 @@
       vimAlias = true;
       vimdiffAlias = true;
       plugins = with pkgs.vimPlugins; [
-        #async-vim
         dracula-vim
         nvim-lspconfig
         rust-vim
@@ -82,12 +81,10 @@
         vim-dirdiff
         vim-html-template-literals
         vim-javascript
-        #vim-lsp
         vim-nix
         vim-unimpaired
         vim-wayland-clipboard
       ];
-      #extraConfig = "lua << EOF\n" + (builtins.readFile ../nvim.lua) + "EOF\n";
     };
 
     rofi = {
@@ -103,6 +100,10 @@
     waybar = {
       enable = true;
       style = ../waybar-style.css;
+      systemd = {
+        enable = true;
+        target = "sway-session.target";
+      };
       settings = {
         mainBar = {
           layer = "top";
@@ -333,9 +334,6 @@
       sway = {
         enable = true;
         package = null;
-        systemd = {
-          enable = true;
-        };
         config = {
           modifier = "Mod4";
           terminal = "${pkgs.wezterm}/bin/wezterm";
@@ -384,12 +382,7 @@
               workspace = "-3";
             }
           ];
-          bars = [
-            {
-              position = "top";
-              command = "${pkgs.waybar}/bin/waybar";
-            }
-          ];
+          bars = [];
           focus = {
             followMouse = false;
             mouseWarping = false;

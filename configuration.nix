@@ -45,6 +45,8 @@
       pulseaudio
       pv
       python3
+      python310Packages.python-lsp-server
+      retroarchFull
       ripgrep
       rlwrap
       rnix-lsp
@@ -219,7 +221,6 @@
       enable = true;
       alsa.enable = true;
       pulse.enable = true;
-      wireplumber.enable = true;
     };
 
     printing.enable = true;
@@ -228,10 +229,7 @@
       packages = [ pkgs.android-udev-rules ];
     };
 
-    openssh = {
-      enable = true;
-      allowSFTP = true;
-    };
+    openssh.enable = true;
   };
 
   system = {
@@ -257,5 +255,8 @@
     shell = pkgs.fish;
   };
 
-  xdg.portal.enable = true;
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+  };
 }
