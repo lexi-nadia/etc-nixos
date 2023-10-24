@@ -19,6 +19,14 @@
           ./configuration.nix
         ];
       };
+      octavia = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          home-manager.nixosModules.home-manager
+          ./hosts/octavia.nix
+          ./configuration.nix
+        ];
+      };
       umi = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [

@@ -367,6 +367,9 @@
               pos = "1920 0";
               bg = "$HOME/img/wallpaper.jpg center";
             };
+            "BOE 0x0BCA Unknown" = {
+              scale = "1";
+            };
           };
           workspaceOutputAssign = [
             {
