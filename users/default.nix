@@ -348,6 +348,8 @@
             };
             "type:touchpad" = {
               natural_scroll = "enabled";
+              tap = "enabled";
+              tap_button_map = "lrm";
             };
             "1:1:AT_Translated_Set_2_keyboard" = {
               xkb_options = "caps:swapescape";
@@ -388,7 +390,7 @@
           bars = [];
           focus = {
             followMouse = false;
-            mouseWarping = false;
+            mouseWarping = "container";
           };
           floating = {
             criteria = [
