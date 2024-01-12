@@ -42,11 +42,12 @@
       parallel
       pavucontrol
       pdftk
+      powertop
       pulseaudio
       pv
       python3
-      python310Packages.python-lsp-server
-      retroarchFull
+      python311Packages.python-lsp-server
+      retroarch
       ripgrep
       rlwrap
       rnix-lsp
@@ -121,7 +122,7 @@
     ];
     extraOptions =
       ''
-        extra-experimental-features = ca-derivations flakes nix-command repl-flake
+        extra-experimental-features = auto-allocate-uids ca-derivations configurable-impure-env flakes nix-command repl-flake
       '';
   };
 

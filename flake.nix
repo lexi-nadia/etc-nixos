@@ -22,6 +22,7 @@
       octavia = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          nixos-hardware.nixosModules.framework-13th-gen-intel
           home-manager.nixosModules.home-manager
           ./hosts/octavia.nix
           ./configuration.nix

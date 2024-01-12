@@ -46,4 +46,8 @@
   networking = {
     hostName = "octavia";
   };
+
+  services = {
+    fwupd.enable = true;
+  };
 }

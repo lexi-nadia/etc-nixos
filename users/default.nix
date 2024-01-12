@@ -359,7 +359,7 @@
             eDP-1 = {
               #pos = "1920 120";
               pos = "0 0";
-              bg = "$HOME/img/wallpaper.jpg center";
+              bg = "$HOME/img/wallpaper.jpg fill";
             };
             "Acer Technologies Acer XFA240 0x0000F386" = {
               pos = "0 0";
