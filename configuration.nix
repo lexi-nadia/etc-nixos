@@ -12,7 +12,6 @@
       anki-bin
       audacity
       bc
-      bsnes-hd
       cargo
       chromium
       clang
