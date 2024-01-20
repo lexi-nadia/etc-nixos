@@ -28,6 +28,7 @@
       hydra-check
       imagemagick
       libreoffice
+      lua-language-server
       mullvad
       mullvad-vpn
       networkmanagerapplet
