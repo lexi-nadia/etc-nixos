@@ -62,7 +62,7 @@ nvim_lsp.pylsp.setup {
 		debounce_text_changes = 150,
 	},
 }
-nvim_lsp.rnix.setup {
+nvim_lsp.nixd.setup {
 	on_attach = on_attach,
 	flags = {
 		debounce_text_changes = 150,

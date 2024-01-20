@@ -34,6 +34,7 @@
       mullvad-vpn
       networkmanagerapplet
       nix-tree
+      nixd
       nixpkgs-fmt
       nodePackages.node2nix
       nodejs
@@ -50,7 +51,6 @@
       retroarch
       ripgrep
       rlwrap
-      rnix-lsp
       rofi-wayland
       rust-analyzer
       rustc
