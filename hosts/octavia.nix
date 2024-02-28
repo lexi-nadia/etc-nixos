@@ -39,6 +39,10 @@
   };
 
   hardware = {
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
     enableRedistributableFirmware = true;
     cpu.intel.updateMicrocode = true;
   };
@@ -48,6 +52,7 @@
   };
 
   services = {
+    blueman.enable = true;
     fwupd.enable = true;
   };
 }

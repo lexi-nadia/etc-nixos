@@ -356,10 +356,12 @@
             };
           };
           output = {
-            eDP-1 = {
-              #pos = "1920 120";
+            "eDP-1" = {
               pos = "0 0";
               bg = "$HOME/img/wallpaper.jpg fill";
+            };
+            "BOE 0x0BCA Unknown" = {
+              scale = "1";
             };
             "Acer Technologies Acer XFA240 0x0000F386" = {
               pos = "0 0";
@@ -369,8 +371,13 @@
               pos = "1920 0";
               bg = "$HOME/img/wallpaper.jpg center";
             };
-            "BOE 0x0BCA Unknown" = {
-              scale = "1";
+            "Lenovo Group Limited P27h-20 V9092ABA" = {
+              pos = "2256 0";
+              bg = "$HOME/img/wallpaper2.jpg fill";
+            };
+            "Lenovo Group Limited P27h-20 V9092ABB" = {
+              pos = "4816 0";
+              bg = "$HOME/img/wallpaper2.jpg fill";
             };
           };
           workspaceOutputAssign = [
@@ -468,6 +475,7 @@
               "${modifier}+Ctrl+p" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot save window";
             };
           startup = [
+            { command = "blueman-applet"; always = true; }
             { command = "nm-applet --indicator"; always = true; }
           ];
         };

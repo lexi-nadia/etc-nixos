@@ -8,7 +8,6 @@
   environment = {
     systemPackages = with pkgs; [
       OSCAR
-      android-tools
       anki-bin
       audacity
       bc
@@ -133,6 +132,10 @@
   ];
 
   programs = {
+    adb = {
+      enable = true;
+    };
+
     fish = {
       enable = true;
       shellAbbrs = {
@@ -251,7 +254,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.lexi = {
     isNormalUser = true;
-    extraGroups = [ "video" "wheel" ];
+    extraGroups = [ "adbusers" "video" "wheel" ];
     shell = pkgs.fish;
   };
 
