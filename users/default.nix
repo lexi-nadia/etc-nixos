@@ -363,11 +363,11 @@
             "BOE 0x0BCA Unknown" = {
               scale = "1";
             };
-            "Acer Technologies Acer XFA240 0x0000F386" = {
+            "Acer Technologies Acer XFA240 0x1171F386" = {
               pos = "0 0";
               bg = "$HOME/img/wallpaper2.jpg fill";
             };
-            "Acer Technologies Acer XFA240 0x00009392" = {
+            "Acer Technologies Acer XFA240 0x11118292" = {
               pos = "1920 0";
               bg = "$HOME/img/wallpaper.jpg center";
             };
