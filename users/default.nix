@@ -334,6 +334,7 @@
       sway = {
         enable = true;
         package = null;
+        checkConfig = false;
         config = {
           modifier = "Mod4";
           terminal = "${pkgs.wezterm}/bin/wezterm";
