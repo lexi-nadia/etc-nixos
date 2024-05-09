@@ -115,13 +115,12 @@
   };
 
   nix = {
-    package = pkgs.nixUnstable;
     settings.allowed-users = [
       "@wheel"
     ];
     extraOptions =
       ''
-        extra-experimental-features = auto-allocate-uids ca-derivations configurable-impure-env flakes nix-command repl-flake
+        extra-experimental-features = auto-allocate-uids ca-derivations flakes nix-command repl-flake
       '';
   };
 
