@@ -72,8 +72,7 @@
   };
 
   fonts.packages = with pkgs; [
-    fira-code
-    font-awesome
+    nerdfonts
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
@@ -142,7 +141,7 @@
         diff = "diff --color";
         grep = "rg";
         less = "less -n";
-        ls = "ls --color=auto -F --group-directories-first";
+        ls = "lsd";
         nfu = "nix flake update";
         nrs = "nixos-rebuild switch --use-remote-sudo";
         ps = "ps -eHo 'pid,stime,euser,cmd'";

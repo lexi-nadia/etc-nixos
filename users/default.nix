@@ -29,6 +29,17 @@
       };
     };
 
+    lsd = {
+      enable = true;
+      enableAliases = true;
+      settings = {
+        date = "+%Y-%m-%d %H:%M:%S";
+        sorting = {
+          dir-grouping = "first";
+        };
+      };
+    };
+
     mercurial = {
       enable = true;
       aliases = {
@@ -117,8 +128,8 @@
             capslock = true;
             format = "{name} {icon}";
             format-icons = {
-              locked = "";
-              unlocked = "";
+              locked = "󰌾";
+              unlocked = "󰿆";
             };
           };
 
@@ -133,8 +144,8 @@
           idle_inhibitor = {
             format = "{icon}";
             format-icons = {
-              activated = "";
-              deactivated = "";
+              activated = "󰈈";
+              deactivated = "󰈉";
             };
           };
 
@@ -149,23 +160,23 @@
           };
 
           cpu = {
-            format = "{usage}% ";
+            format = "{usage}% 󰘚";
             tooltip = false;
           };
 
           memory = {
-            format = "{}% ";
+            format = "{}% 󰍛";
           };
 
           temperature = {
             critical-threshold = 80;
             format = "{temperatureC}°C {icon}";
-            format-icons = [ "" "" "" ];
+            format-icons = [ "󱩿" "󰸁" ];
           };
 
           backlight = {
             format = "{percent}% {icon}";
-            format-icons = [ "" "" ];
+            format-icons = [ "󰃚" "󰃛" "󰃜" "󰃝" "󰃞" "󰃟" "󰃠" ];
             on-scroll-up = "light -A 1";
             on-scroll-down = "light -U 1";
           };
@@ -176,35 +187,30 @@
               critical = 15;
             };
             format = "{capacity}% {icon}";
-            format-charging = "{capacity}% ";
-            format-not-charging = "{capacity}% ";
-            format-not = "{capacity}% ";
+            format-charging = "{capacity}%󰂄";
+            format-not-charging = "{capacity}% 󰂃";
+            format-not = "{capacity}% 󰂃";
             format-full = "{capacity}% ";
             format-alt = "{time} {icon}";
-            format-icons = [ "" "" "" "" "" ];
+            format-icons = [ "󰂎" "󱊡" "󱊢" "󱊣" "󰁹" ];
           };
 
           network = {
-            format-wifi = "{essid} ({signalStrength}%) ";
-            format-ethernet = "{ifname}: {ipaddr}/{cidr} ";
-            format-linked = "{ifname} (No IP) ";
-            format-disconnected = "Disconnected ⚠";
+            format-wifi = "{essid} ({signalStrength}%) 󰖩";
+            format-ethernet = "{ifname}: {ipaddr}/{cidr} 󰈀";
+            format-linked = "{ifname} (No IP) 󰌚";
+            format-disconnected = "Disconnected 󰌙";
             format-alt = "{ifname}: {ipaddr}/{cidr}";
           };
 
           "pulseaudio#out" = {
             format = "{volume}% {icon}";
             format-bluetooth = "{volume}% {icon}";
-            format-bluetooth-muted = " {icon}";
-            format-muted = "";
+            format-bluetooth-muted = "󰝟 {icon}";
+            format-muted = "󰝟";
             format-icons = {
-              headphone = "";
-              hands-free = "";
-              headset = "";
-              phone = "";
-              portable = "";
-              car = "";
-              default = [ "" "" "" ];
+              headphone = "";
+              default = [ "󰕿" "󰖀" "󰕾" ];
             };
             on-click = "${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle";
             on-click-right = "pavucontrol -t 1";
@@ -215,16 +221,11 @@
             format-bluetooth = "{format_source}";
             format-bluetooth-muted = "{format_source}";
             format-muted = "{format_source}";
-            format-source = "{volume}% ";
-            format-source-muted = "";
+            format-source = "{volume}% 󰍬";
+            format-source-muted = "󰍭";
             format-icons = {
               headphone = "";
-              hands-free = "";
-              headset = "";
-              phone = "";
-              portable = "";
-              car = "";
-              default = [ "" "" "" ];
+              default = [ "󰕿" "󰖀" "󰕾" ];
             };
             on-click = "${pkgs.pulseaudio}/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle";
             on-click-right = "pavucontrol -t 2";
@@ -242,9 +243,9 @@
           local wezterm = require 'wezterm'
           return {
             color_scheme = 'Dracula',
-            font = wezterm.font 'Fira Code',
-            font_size = 10.0 ,
-            hide_tab_bar_if_only_one_tab = true;
+            font = wezterm.font 'FiraCode Nerd Font',
+            font_size = 10.0,
+            hide_tab_bar_if_only_one_tab = true,
             xcursor_theme = 'Vanilla-DMZ',
             xcursor_size = 32,
 
