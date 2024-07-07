@@ -399,7 +399,6 @@
           bars = [];
           focus = {
             followMouse = false;
-            mouseWarping = "container";
           };
           floating = {
             criteria = [
