@@ -16,6 +16,7 @@
       clang
       cockatrice
       deno
+      eog
       evince
       exiftool
       file
@@ -23,7 +24,6 @@
       flips
       fzf
       git-annex
-      gnome.eog
       htop
       hydra-check
       imagemagick
