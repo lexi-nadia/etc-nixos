@@ -47,6 +47,7 @@
       pv
       python3
       python311Packages.python-lsp-server
+      qbittorrent
       retroarch
       ripgrep
       rlwrap
