@@ -248,6 +248,7 @@
             hide_tab_bar_if_only_one_tab = true,
             xcursor_theme = 'Vanilla-DMZ',
             xcursor_size = 32,
+            front_end = "WebGpu",
 
             hyperlink_rules = {
               {
