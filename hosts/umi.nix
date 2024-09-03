@@ -12,8 +12,15 @@
       };
     };
     loader = {
+      timeout = 15;
       efi.canTouchEfiVariables = true;
-      systemd-boot.enable = true;
+      grub = {
+        enable = true;
+        default = "saved";
+        device = "nodev";
+        efiSupport = true;
+        useOSProber = true;
+      };
     };
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
