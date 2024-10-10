@@ -8,34 +8,41 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, home-manager }: {
-    nixosConfigurations = {
-      mehve = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          nixos-hardware.nixosModules.lenovo-thinkpad-x1-6th-gen
-          home-manager.nixosModules.home-manager
-          ./hosts/mehve.nix
-          ./configuration.nix
-        ];
-      };
-      octavia = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          nixos-hardware.nixosModules.framework-13th-gen-intel
-          home-manager.nixosModules.home-manager
-          ./hosts/octavia.nix
-          ./configuration.nix
-        ];
-      };
-      umi = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          home-manager.nixosModules.home-manager
-          ./hosts/umi.nix
-          ./configuration.nix
-        ];
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixos-hardware,
+      home-manager,
+    }:
+    {
+      nixosConfigurations = {
+        mehve = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            nixos-hardware.nixosModules.lenovo-thinkpad-x1-6th-gen
+            home-manager.nixosModules.home-manager
+            ./hosts/mehve.nix
+            ./configuration.nix
+          ];
+        };
+        octavia = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            nixos-hardware.nixosModules.framework-13th-gen-intel
+            home-manager.nixosModules.home-manager
+            ./hosts/octavia.nix
+            ./configuration.nix
+          ];
+        };
+        umi = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            home-manager.nixosModules.home-manager
+            ./hosts/umi.nix
+            ./configuration.nix
+          ];
+        };
       };
     };
-  };
 }

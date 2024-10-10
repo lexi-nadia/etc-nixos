@@ -120,8 +120,26 @@
           layer = "top";
           position = "top";
           height = 30;
-          modules-left = [ "sway/workspaces" "sway/mode" "sway/window" ];
-          modules-right = [ "idle_inhibitor" "pulseaudio#out" "pulseaudio#in" "network" "cpu" "memory" "temperature" "backlight" "keyboard-state" "sway/language" "battery" "tray" "clock" ];
+          modules-left = [
+            "sway/workspaces"
+            "sway/mode"
+            "sway/window"
+          ];
+          modules-right = [
+            "idle_inhibitor"
+            "pulseaudio#out"
+            "pulseaudio#in"
+            "network"
+            "cpu"
+            "memory"
+            "temperature"
+            "backlight"
+            "keyboard-state"
+            "sway/language"
+            "battery"
+            "tray"
+            "clock"
+          ];
 
           keyboard-state = {
             numlock = true;
@@ -171,12 +189,23 @@
           temperature = {
             critical-threshold = 80;
             format = "{temperatureC}°C {icon}";
-            format-icons = [ "󱩿" "󰸁" ];
+            format-icons = [
+              "󱩿"
+              "󰸁"
+            ];
           };
 
           backlight = {
             format = "{percent}% {icon}";
-            format-icons = [ "󰃚" "󰃛" "󰃜" "󰃝" "󰃞" "󰃟" "󰃠" ];
+            format-icons = [
+              "󰃚"
+              "󰃛"
+              "󰃜"
+              "󰃝"
+              "󰃞"
+              "󰃟"
+              "󰃠"
+            ];
             on-scroll-up = "light -A 1";
             on-scroll-down = "light -U 1";
           };
@@ -192,7 +221,13 @@
             format-not = "{capacity}% 󰂃";
             format-full = "{capacity}% ";
             format-alt = "{time} {icon}";
-            format-icons = [ "󰂎" "󱊡" "󱊢" "󱊣" "󰁹" ];
+            format-icons = [
+              "󰂎"
+              "󱊡"
+              "󱊢"
+              "󱊣"
+              "󰁹"
+            ];
           };
 
           network = {
@@ -210,7 +245,11 @@
             format-muted = "󰝟";
             format-icons = {
               headphone = "";
-              default = [ "󰕿" "󰖀" "󰕾" ];
+              default = [
+                "󰕿"
+                "󰖀"
+                "󰕾"
+              ];
             };
             on-click = "${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle";
             on-click-right = "pavucontrol -t 1";
@@ -225,7 +264,11 @@
             format-source-muted = "󰍭";
             format-icons = {
               headphone = "";
-              default = [ "󰕿" "󰖀" "󰕾" ];
+              default = [
+                "󰕿"
+                "󰖀"
+                "󰕾"
+              ];
             };
             on-click = "${pkgs.pulseaudio}/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle";
             on-click-right = "pavucontrol -t 2";
@@ -238,50 +281,49 @@
 
     wezterm = {
       enable = true;
-      extraConfig =
-        ''
-          local wezterm = require 'wezterm'
-          return {
-            color_scheme = 'Dracula',
-            font = wezterm.font 'FiraCode Nerd Font',
-            font_size = 10.0,
-            hide_tab_bar_if_only_one_tab = true,
-            xcursor_theme = 'Vanilla-DMZ',
-            xcursor_size = 32,
-            front_end = "WebGpu",
+      extraConfig = ''
+        local wezterm = require 'wezterm'
+        return {
+          color_scheme = 'Dracula',
+          font = wezterm.font 'FiraCode Nerd Font',
+          font_size = 10.0,
+          hide_tab_bar_if_only_one_tab = true,
+          xcursor_theme = 'Vanilla-DMZ',
+          xcursor_size = 32,
+          front_end = "WebGpu",
 
-            hyperlink_rules = {
-              {
-                regex = [[\b(http|https)://[\w.-]+\S*\b]],
-                format = '$0',
-              },
+          hyperlink_rules = {
+            {
+              regex = [[\b(http|https)://[\w.-]+\S*\b]],
+              format = '$0',
+            },
+          },
+
+          mouse_bindings = {
+            -- Change the default click behavior so that it only selects
+            -- text and doesn't open hyperlinks
+            {
+              event = { Up = { streak = 1, button = 'Left' } },
+              mods = 'NONE',
+              action = wezterm.action.CompleteSelection 'PrimarySelection',
             },
 
-            mouse_bindings = {
-              -- Change the default click behavior so that it only selects
-              -- text and doesn't open hyperlinks
-              {
-                event = { Up = { streak = 1, button = 'Left' } },
-                mods = 'NONE',
-                action = wezterm.action.CompleteSelection 'PrimarySelection',
-              },
-
-              -- and make CTRL-Click open hyperlinks
-              {
-                event = { Up = { streak = 1, button = 'Left' } },
-                mods = 'CTRL',
-                action = wezterm.action.OpenLinkAtMouseCursor,
-              },
-
-              -- Disable the 'Down' event of CTRL-Click to avoid weird program behaviors
-              {
-                event = { Down = { streak = 1, button = 'Left' } },
-                mods = 'CTRL',
-                action = wezterm.action.Nop,
-              },
+            -- and make CTRL-Click open hyperlinks
+            {
+              event = { Up = { streak = 1, button = 'Left' } },
+              mods = 'CTRL',
+              action = wezterm.action.OpenLinkAtMouseCursor,
             },
-          }
-        '';
+
+            -- Disable the 'Down' event of CTRL-Click to avoid weird program behaviors
+            {
+              event = { Down = { streak = 1, button = 'Left' } },
+              mods = 'CTRL',
+              action = wezterm.action.Nop,
+            },
+          },
+        }
+      '';
     };
 
   };
@@ -295,14 +337,13 @@
       backgroundColor = "#002B36";
       textColor = "#839496";
       borderColor = "#073642";
-      extraConfig =
-        ''
-          [urgency=high]
-          text-color=#CB4B16
+      extraConfig = ''
+        [urgency=high]
+        text-color=#CB4B16
 
-          [app-name="discord"]
-          anchor=bottom-right
-        '';
+        [app-name="discord"]
+        anchor=bottom-right
+      '';
     };
 
     network-manager-applet.enable = true;
@@ -397,7 +438,7 @@
               workspace = "-3";
             }
           ];
-          bars = [];
+          bars = [ ];
           focus = {
             followMouse = false;
           };
@@ -414,19 +455,27 @@
           window = {
             commands = [
               {
-                criteria = { shell = ".*"; };
+                criteria = {
+                  shell = ".*";
+                };
                 command = ''title_format "%title :: %shell"'';
               }
               {
-                criteria = { title = "^Picture in picture$"; };
+                criteria = {
+                  title = "^Picture in picture$";
+                };
                 command = "sticky enable";
               }
               {
-                criteria = { title = "nm-tray"; };
+                criteria = {
+                  title = "nm-tray";
+                };
                 command = "floating disable";
               }
               {
-                criteria = { title = "Firefox — Sharing Indicator"; };
+                criteria = {
+                  title = "Firefox — Sharing Indicator";
+                };
                 command = "no_focus";
               }
             ];
@@ -477,8 +526,14 @@
               "${modifier}+Ctrl+p" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot save window";
             };
           startup = [
-            { command = "blueman-applet"; always = true; }
-            { command = "nm-applet --indicator"; always = true; }
+            {
+              command = "blueman-applet";
+              always = true;
+            }
+            {
+              command = "nm-applet --indicator";
+              always = true;
+            }
           ];
         };
       };

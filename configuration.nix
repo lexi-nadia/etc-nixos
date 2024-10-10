@@ -120,18 +120,19 @@
     settings.allowed-users = [
       "@wheel"
     ];
-    extraOptions =
-      ''
-        extra-experimental-features = auto-allocate-uids ca-derivations flakes nix-command no-url-literals repl-flake
-      '';
+    extraOptions = ''
+      extra-experimental-features = auto-allocate-uids ca-derivations flakes nix-command no-url-literals repl-flake
+    '';
   };
 
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "steam"
-    "steam-original"
-    "steam-run"
-    "steam-runtime"
-  ];
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
+    builtins.elem (lib.getName pkg) [
+      "steam"
+      "steam-original"
+      "steam-run"
+      "steam-runtime"
+    ];
 
   programs = {
     adb.enable = true;
@@ -252,8 +253,12 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.lexi = {
     isNormalUser = true;
-    extraGroups = [ "adbusers" "video" "wheel" ];
     shell = pkgs.fish;
+    extraGroups = [
+      "adbusers"
+      "video"
+      "wheel"
+    ];
   };
 
   xdg.portal = {

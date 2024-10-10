@@ -1,14 +1,26 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  modulesPath,
+  ...
+}:
 
 {
   boot = {
     initrd = {
-      availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+      availableKernelModules = [
+        "xhci_pci"
+        "nvme"
+        "usb_storage"
+        "sd_mod"
+        "rtsx_pci_sdmmc"
+      ];
       kernelModules = [ "dm-snapshot" ];
       luks.devices.root = {
-        allowDiscards = true;  # enables TRIM, optional.
+        allowDiscards = true; # enables TRIM, optional.
         device = "/dev/disk/by-uuid/8bb6d73a-0c15-4955-983a-7f02083be96e";
-        preLVM = true;  # we need to decrypt the physical partition before LVM mounts our logical partitions.
+        preLVM = true; # we need to decrypt the physical partition before LVM mounts our logical partitions.
       };
     };
     loader = {
