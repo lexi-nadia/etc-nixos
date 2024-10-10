@@ -32,6 +32,7 @@
       networkmanagerapplet
       nix-tree
       nixd
+      nixfmt-rfc-style
       nixpkgs-fmt
       nodePackages.node2nix
       nodejs
