@@ -67,6 +67,10 @@
       wl-clipboard
       zathura
     ];
+
+    variables = {
+      PAGER = "less -FRX";
+    };
   };
 
   fonts.packages = with pkgs; [
@@ -130,9 +134,7 @@
   ];
 
   programs = {
-    adb = {
-      enable = true;
-    };
+    adb.enable = true;
 
     fish = {
       enable = true;
@@ -193,6 +195,8 @@
       defaultEditor = true;
     };
 
+    regreet.enable = true;
+
     ssh = {
       startAgent = true;
     };
@@ -207,12 +211,11 @@
 
     greetd = {
       enable = true;
-      settings = rec {
+      settings = {
         initial_session = {
           command = "${pkgs.sway}/bin/sway";
           user = "lexi";
         };
-        default_session = initial_session;
       };
     };
 
