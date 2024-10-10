@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   environment = {
@@ -21,23 +21,20 @@
       exiftool
       file
       firefox
-      flips
       fzf
       git-annex
       htop
       hydra-check
       imagemagick
+      jujutsu
       libreoffice
       lua-language-server
-      mullvad
-      mullvad-vpn
       networkmanagerapplet
       nix-tree
       nixd
       nixpkgs-fmt
       nodePackages.node2nix
       nodejs
-      nushell
       pandoc
       parallel
       pavucontrol
@@ -46,7 +43,7 @@
       pulseaudio
       pv
       python3
-      python311Packages.python-lsp-server
+      python312Packages.python-lsp-server
       qbittorrent
       retroarch
       ripgrep
@@ -121,7 +118,7 @@
     ];
     extraOptions =
       ''
-        extra-experimental-features = auto-allocate-uids ca-derivations flakes nix-command repl-flake
+        extra-experimental-features = auto-allocate-uids ca-derivations flakes nix-command no-url-literals repl-flake
       '';
   };
 
@@ -219,7 +216,10 @@
       };
     };
 
-    mullvad-vpn.enable = true;
+    mullvad-vpn = {
+      enable = true;
+      package = pkgs.mullvad-vpn;
+    };
 
     pipewire = {
       enable = true;
@@ -228,12 +228,6 @@
     };
 
     printing.enable = true;
-
-    udev = {
-      packages = [ pkgs.android-udev-rules ];
-    };
-
-    openssh.enable = true;
   };
 
   system = {
