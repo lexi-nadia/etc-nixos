@@ -483,7 +483,6 @@
           keybindings =
             let
               modifier = "Mod4";
-              terminal = "${pkgs.wezterm}/bin/wezterm";
             in
             lib.mkOptionDefault {
               "${modifier}+Shift+Return" = "exec ${pkgs.firefox}/bin/firefox";
