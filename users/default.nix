@@ -17,6 +17,12 @@
       userName = "lexi bromfield";
       userEmail = "me@lexibromfield.com";
       extraConfig = {
+        alias = {
+          dt = "difftool --tool vimtabdiff --dir-diff";
+        };
+        "difftool \"vimtabdiff\"" = {
+          "cmd" = "vimtabdiff.py $LOCAL $REMOTE";
+        };
         init = {
           defaultBranch = "main";
         };
@@ -417,7 +423,6 @@
             };
             "Lenovo Group Limited P27h-20 V9092ABA" = {
               pos = "2256 0";
-              bg = "$HOME/img/wallpaper2.jpg fill";
             };
             "Lenovo Group Limited P27h-20 V9092ABB" = {
               pos = "4816 0";
@@ -446,7 +451,7 @@
             criteria = [
               { app_id = "xdg-desktop-portal-gtk"; }
               { app_id = "eog"; }
-              { app_id = "^$"; }
+              { shell = "xwayland"; app_id = "^$"; }
               { title = "^Picture in picture$"; }
               { title = "Firefox — Sharing Indicator"; }
             ];

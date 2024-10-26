@@ -167,6 +167,7 @@
     zsh = {
       enable = true;
       autosuggestions.enable = true;
+      syntaxHighlighting.enable = true;
       setOptions = lib.mkOptionDefault [
         "AUTO_PUSHD"
         "NO_BEEP"
