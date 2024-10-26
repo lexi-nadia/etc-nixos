@@ -17,6 +17,12 @@
       userName = "lexi bromfield";
       userEmail = "me@lexibromfield.com";
       extraConfig = {
+        alias = {
+          dt = "difftool --tool vimtabdiff --dir-diff";
+        };
+        "difftool \"vimtabdiff\"" = {
+          "cmd" = "vimtabdiff.py $LOCAL $REMOTE";
+        };
         init = {
           defaultBranch = "main";
         };
