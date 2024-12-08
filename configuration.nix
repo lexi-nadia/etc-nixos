@@ -67,7 +67,6 @@
       signal-cli
       signal-desktop
       sqlite
-      steam
       sway-contrib.grimshot
       swayidle
       swaylock
@@ -137,14 +136,6 @@
     '';
   };
 
-  nixpkgs.config.allowUnfreePredicate =
-    pkg:
-    builtins.elem (lib.getName pkg) [
-      "steam"
-      "steam-run"
-      "steam-unwrapped"
-    ];
-
   programs = {
     adb.enable = true;
     light.enable = true;
@@ -160,7 +151,6 @@
       startAgent = true;
     };
 
-    steam.enable = true;
     sway.enable = true;
     xwayland.enable = true;
 
