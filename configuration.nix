@@ -17,7 +17,7 @@
       ps = "ps -eHo 'pid,stime,euser,cmd'";
     };
     systemPackages = with pkgs; [
-      OSCAR
+      oscar
       anki-bin
       audacity
       bc
@@ -85,11 +85,12 @@
   };
 
   fonts.packages = with pkgs; [
-    nerdfonts
+    nerd-fonts.fira-code
+    nerd-fonts.noto
     noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-    noto-fonts-extra
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
+    noto-fonts-color-emoji
     roboto
     roboto-mono
     roboto-slab
@@ -132,7 +133,7 @@
       "@wheel"
     ];
     extraOptions = ''
-      extra-experimental-features = auto-allocate-uids ca-derivations flakes nix-command no-url-literals repl-flake
+      extra-experimental-features = auto-allocate-uids ca-derivations flakes nix-command no-url-literals
     '';
   };
 
@@ -140,9 +141,8 @@
     pkg:
     builtins.elem (lib.getName pkg) [
       "steam"
-      "steam-original"
       "steam-run"
-      "steam-runtime"
+      "steam-unwrapped"
     ];
 
   programs = {
