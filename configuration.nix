@@ -85,6 +85,7 @@
 
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code
+    nerd-fonts.fira-mono
     nerd-fonts.noto
     noto-fonts
     noto-fonts-cjk-sans
@@ -176,6 +177,12 @@
   };
 
   services = {
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+      nssmdns6 = true;
+    };
+
     gnome.gnome-keyring.enable = true;
 
     greetd = {
@@ -199,7 +206,10 @@
       pulse.enable = true;
     };
 
-    printing.enable = true;
+    printing = {
+      enable = true;
+      drivers = with pkgs; [ hplip ];
+    };
   };
 
   system = {
