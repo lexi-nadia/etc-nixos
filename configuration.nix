@@ -13,7 +13,7 @@
       less = "less -FRX";
       ls = "lsd";
       nfu = "nix flake update";
-      nrs = "nixos-rebuild switch --use-remote-sudo";
+      nrs = "nixos-rebuild switch --use-remote-sudo --keep-going";
       ps = "ps -eHo 'pid,stime,euser,cmd'";
     };
     systemPackages = with pkgs; [
