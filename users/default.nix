@@ -336,19 +336,20 @@
   services = {
     mako = {
       enable = true;
-      defaultTimeout = 10000;
-      font = "Noto Sans 8";
-      # https://github.com/altercation/solarized#the-values
-      backgroundColor = "#002B36";
-      textColor = "#839496";
-      borderColor = "#073642";
-      extraConfig = ''
-        [urgency=high]
-        text-color=#CB4B16
-
-        [app-name="discord"]
-        anchor=bottom-right
-      '';
+      settings = {
+        default-timeout = 10000;
+        font = "Noto Sans 8";
+        # https://github.com/altercation/solarized#the-values
+        background-color = "#002B36";
+        text-color = "#839496";
+        border-color = "#073642";
+        "urgency=high" = {
+          text-color = "#CB4B16";
+        };
+        "app-name=\"discord\"" = {
+          anchor = "bottom-right";
+        };
+      };
     };
 
     network-manager-applet.enable = true;
