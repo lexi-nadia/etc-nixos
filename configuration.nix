@@ -5,6 +5,15 @@
 { lib, pkgs, ... }:
 
 {
+  nixpkgs.overlays = [ (final: prev: {
+    inherit (final.lixPackageSets.stable)
+      nixpkgs-review
+      nix-direnv
+      nix-eval-jobs
+      nix-fast-build
+      colmena;
+  }) ];
+
   environment = {
     shellAliases = {
       diff = "diff --color";
@@ -129,6 +138,7 @@
   };
 
   nix = {
+    package = pkgs.lixPackageSets.stable.lix;
     settings.allowed-users = [
       "@wheel"
     ];
