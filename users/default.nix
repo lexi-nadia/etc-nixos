@@ -524,10 +524,10 @@
               "XF86MonBrightnessDown" = "exec ${pkgs.light}/bin/light -U 5";
 
               # Take a screenshot
-              "${modifier}+p" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot save active";
-              "${modifier}+Shift+p" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot save area";
-              "${modifier}+Mod1+p" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot save output";
-              "${modifier}+Ctrl+p" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot save window";
+              "${modifier}+p" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot copy active";
+              "${modifier}+Shift+p" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot copy area";
+              "${modifier}+Mod1+p" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot copy output";
+              "${modifier}+Ctrl+p" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot copy window";
             };
           startup = [
             {

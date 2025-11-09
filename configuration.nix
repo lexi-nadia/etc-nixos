@@ -5,6 +5,11 @@
 { lib, pkgs, ... }:
 
 {
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "steam"
+    "steam-unwrapped"
+  ];
+
   nixpkgs.overlays = [ (final: prev: {
     inherit (final.lixPackageSets.stable)
       nixpkgs-review
@@ -161,6 +166,8 @@
     ssh = {
       startAgent = true;
     };
+
+    steam.enable = true;
 
     sway.enable = true;
     xwayland.enable = true;
