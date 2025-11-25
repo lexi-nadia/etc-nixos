@@ -59,6 +59,10 @@
   };
 
   hardware = {
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
     enableRedistributableFirmware = true;
     cpu.intel.updateMicrocode = true;
   };
