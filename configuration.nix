@@ -163,6 +163,10 @@
 
     regreet.enable = true;
 
+    ssh = {
+      startAgent = true;
+    };
+
     steam.enable = true;
 
     sway.enable = true;
@@ -196,7 +200,10 @@
       nssmdns6 = true;
     };
 
-    gnome.gnome-keyring.enable = true;
+    gnome = {
+      gcr-ssh-agent.enable = false;
+      gnome-keyring.enable = true;
+    };
 
     greetd = {
       enable = true;
