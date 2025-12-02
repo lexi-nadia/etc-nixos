@@ -27,7 +27,7 @@
       less = "less -FRX";
       ls = "lsd";
       nfu = "nix flake update";
-      nrs = "nixos-rebuild switch --use-remote-sudo --keep-going";
+      nrs = "nixos-rebuild switch --sudo --keep-going";
       ps = "ps -eHo 'pid,stime,euser,cmd'";
     };
     systemPackages = with pkgs; [
@@ -73,7 +73,7 @@
       retroarch
       ripgrep
       rlwrap
-      rofi-wayland
+      rofi
       rust-analyzer
       rustc
       rustfmt
@@ -148,7 +148,7 @@
       "@wheel"
     ];
     extraOptions = ''
-      extra-experimental-features = auto-allocate-uids ca-derivations flakes nix-command no-url-literals
+      extra-experimental-features = auto-allocate-uids flakes nix-command no-url-literals
     '';
   };
 
@@ -162,10 +162,6 @@
     };
 
     regreet.enable = true;
-
-    ssh = {
-      startAgent = true;
-    };
 
     steam.enable = true;
 

@@ -14,9 +14,7 @@
   programs = {
     git = {
       enable = true;
-      userName = "lexi bromfield";
-      userEmail = "me@lexibromfield.com";
-      extraConfig = {
+      settings = {
         alias = {
           dt = "difftool --tool vimtabdiff --dir-diff";
         };
@@ -31,6 +29,10 @@
         };
         pull = {
           rebase = true;
+        };
+        user = {
+          email = "me@lexibromfield.com";
+          name = "lexi bromfield";
         };
       };
     };
@@ -105,7 +107,6 @@
 
     rofi = {
       enable = true;
-      package = pkgs.rofi-wayland;
       terminal = "${pkgs.wezterm}/bin/wezterm";
       theme = "solarized_alternate";
       extraConfig = {
@@ -456,7 +457,7 @@
               { title = "Firefox — Sharing Indicator"; }
             ];
           };
-          menu = "${pkgs.rofi-wayland}/bin/rofi -show run";
+          menu = "${pkgs.rofi}/bin/rofi -show run";
           window = {
             commands = [
               {
