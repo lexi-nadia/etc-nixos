@@ -70,4 +70,8 @@
   networking = {
     hostName = "umi";
   };
+
+  services = {
+    blueman.enable = true;
+  };
 }
