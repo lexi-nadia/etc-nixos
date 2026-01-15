@@ -6,6 +6,7 @@
 
 {
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "discord"
     "steam"
     "steam-unwrapped"
   ];
@@ -40,6 +41,7 @@
       clang
       cockatrice
       deno
+      discord
       eog
       evince
       exiftool
@@ -51,9 +53,15 @@
       hydra-check
       imagemagick
       jujutsu
+      kdePackages.kcalc
+      kdePackages.kcharselect
+      kdePackages.kclock
+      kdePackages.kcolorchooser
+      kdePackages.kolourpaint
+      kdePackages.ksystemlog
+      kdePackages.sddm-kcm
       libreoffice
       lua-language-server
-      networkmanagerapplet
       nix-tree
       nixd
       nixfmt-rfc-style
@@ -73,7 +81,6 @@
       retroarch
       ripgrep
       rlwrap
-      rofi
       rust-analyzer
       rustc
       rustfmt
@@ -81,12 +88,8 @@
       signal-cli
       signal-desktop
       sqlite
-      sway-contrib.grimshot
-      swayidle
-      swaylock
       unzip
       vlc
-      waybar
       wezterm
       wl-clipboard
       zathura
@@ -169,7 +172,6 @@
 
     steam.enable = true;
 
-    sway.enable = true;
     xwayland.enable = true;
 
     zsh = {
@@ -193,6 +195,12 @@
     };
   };
 
+  security = {
+    rtkit = {
+      enable = true;
+    };
+  };
+
   services = {
     avahi = {
       enable = true;
@@ -200,17 +208,17 @@
       nssmdns6 = true;
     };
 
-    gnome = {
-      gcr-ssh-agent.enable = false;
-      gnome-keyring.enable = true;
+    desktopManager = {
+      plasma6 = {
+        enable = true;
+      };
     };
 
-    greetd = {
-      enable = true;
-      settings = {
-        initial_session = {
-          command = "${pkgs.sway}/bin/sway";
-          user = "lexi";
+    displayManager = {
+      sddm = {
+        enable = true;
+        wayland = {
+          enable = true;
         };
       };
     };
@@ -223,6 +231,7 @@
     pipewire = {
       enable = true;
       alsa.enable = true;
+      alsa.support32Bit = true;
       pulse.enable = true;
     };
 
