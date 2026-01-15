@@ -84,6 +84,7 @@
       rust-analyzer
       rustc
       rustfmt
+      sbctl
       scribus
       signal-cli
       signal-desktop

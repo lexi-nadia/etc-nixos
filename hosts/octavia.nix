@@ -25,10 +25,14 @@
     };
     loader = {
       efi.canTouchEfiVariables = true;
-      systemd-boot.enable = true;
+      systemd-boot.enable = false;
     };
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/var/lib/sbctl";
+    };
   };
 
   fileSystems = {
@@ -56,6 +60,9 @@
       powerOnBoot = true;
     };
     enableRedistributableFirmware = true;
+    framework = {
+      enableKmod = false;
+    };
     cpu.intel.updateMicrocode = true;
   };
 
