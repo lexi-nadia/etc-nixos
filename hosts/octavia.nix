@@ -71,7 +71,6 @@
   };
 
   services = {
-    blueman.enable = true;
     fwupd.enable = true;
   };
 }
