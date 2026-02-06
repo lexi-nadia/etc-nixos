@@ -49,6 +49,7 @@
       firefox
       fzf
       git-annex
+      gnupg
       htop
       hydra-check
       imagemagick
@@ -57,6 +58,7 @@
       kdePackages.kcharselect
       kdePackages.kclock
       kdePackages.kcolorchooser
+      kdePackages.kgpg
       kdePackages.kolourpaint
       kdePackages.ksystemlog
       kdePackages.sddm-kcm
@@ -72,6 +74,7 @@
       parallel
       pavucontrol
       pdftk
+      pipx
       powertop
       pulseaudio
       pv
