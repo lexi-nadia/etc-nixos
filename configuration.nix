@@ -42,6 +42,7 @@
       cockatrice
       deno
       discord
+      element-desktop
       eog
       evince
       exiftool
@@ -167,6 +168,8 @@
       enable = true;
       defaultEditor = true;
     };
+
+    noisetorch.enable = true;
 
     regreet.enable = true;
 
