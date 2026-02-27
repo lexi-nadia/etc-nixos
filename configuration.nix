@@ -71,6 +71,7 @@
       nixpkgs-fmt
       nodePackages.node2nix
       nodejs
+      olympus
       pandoc
       parallel
       pavucontrol
@@ -79,6 +80,7 @@
       powertop
       pulseaudio
       pv
+      pyrefly
       python3
       python312Packages.python-lsp-server
       qbittorrent

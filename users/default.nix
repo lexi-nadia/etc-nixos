@@ -93,6 +93,7 @@
       vimdiffAlias = true;
       plugins = with pkgs.vimPlugins; [
         dracula-vim
+        lazydev-nvim
         nvim-lspconfig
         rust-vim
         vim-better-whitespace

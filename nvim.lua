@@ -9,7 +9,7 @@ vim.keymap.set("n", "<space>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts
 vim.lsp.enable('denols')
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('nixd')
-vim.lsp.enable('pylsp')
+vim.lsp.enable('pyrefly')
 vim.lsp.enable('rust_analyzer')
 
 vim.opt.ignorecase = true
