@@ -62,6 +62,7 @@
       kdePackages.kgpg
       kdePackages.kolourpaint
       kdePackages.ksystemlog
+      kdePackages.partitionmanager
       kdePackages.sddm-kcm
       libreoffice
       lua-language-server
