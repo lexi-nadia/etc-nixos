@@ -9,6 +9,8 @@
     "discord"
     "steam"
     "steam-unwrapped"
+    "zoom-us"
+    "zoom"
   ];
 
   nixpkgs.overlays = [ (final: prev: {
@@ -105,6 +107,7 @@
       wezterm
       wl-clipboard
       zathura
+      zoom-us
     ];
 
     variables = {
