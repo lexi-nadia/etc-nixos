@@ -39,6 +39,7 @@
     };
     systemPackages = with pkgs; [
       oscar
+      android-tools
       anki-bin
       audacity
       bc
@@ -74,22 +75,20 @@
       lua-language-server
       nix-tree
       nixd
-      nixfmt-rfc-style
+      nixfmt
       nixpkgs-fmt
-      nodePackages.node2nix
       nodejs
       olympus
       pandoc
       parallel
       pavucontrol
       pdftk
-      pipx
       powertop
       pulseaudio
       pv
       pyrefly
       python3
-      python312Packages.python-lsp-server
+      #python312Packages.python-lsp-server
       qbittorrent
       retroarch
       ripgrep
@@ -166,14 +165,11 @@
       "@wheel"
     ];
     extraOptions = ''
-      extra-experimental-features = auto-allocate-uids flakes nix-command no-url-literals
+      extra-experimental-features = auto-allocate-uids flakes nix-command
     '';
   };
 
   programs = {
-    adb.enable = true;
-    light.enable = true;
-
     neovim = {
       enable = true;
       defaultEditor = true;
@@ -238,11 +234,6 @@
           enable = true;
         };
       };
-    };
-
-    mullvad-vpn = {
-      enable = true;
-      package = pkgs.mullvad-vpn;
     };
 
     pipewire = {
