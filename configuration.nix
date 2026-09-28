@@ -48,13 +48,11 @@
       chromium
       clang
       cockatrice
-      cpc
       deno
       discord
       dua
       dust
       element-desktop
-      oculante
       exiftool
       fd
       fend
@@ -86,6 +84,7 @@
       nixfmt
       nixpkgs-fmt
       nodejs
+      oculante
       olympus
       oscar
       ouch
