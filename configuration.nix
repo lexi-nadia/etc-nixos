@@ -38,30 +38,37 @@
       ps = "ps -eHo 'pid,stime,euser,cmd'";
     };
     systemPackages = with pkgs; [
-      oscar
       android-tools
       anki-bin
       audacity
-      bc
+      bottom
+      broot
       cargo
+      choose
       chromium
       clang
       cockatrice
+      cpc
       deno
       discord
+      dua
+      dust
       element-desktop
-      eog
-      evince
+      oculante
       exiftool
+      fd
+      fend
       file
       firefox
       fzf
       git-annex
       gnupg
-      htop
+      hck
+      hexyl
+      huniq
       hydra-check
-      imagemagick
       jujutsu
+      kalker
       kdePackages.kcalc
       kdePackages.kcharselect
       kdePackages.kclock
@@ -73,39 +80,46 @@
       kdePackages.sddm-kcm
       libreoffice
       lua-language-server
+      miro
       nix-tree
       nixd
       nixfmt
       nixpkgs-fmt
       nodejs
       olympus
+      oscar
+      ouch
       pandoc
-      parallel
-      pavucontrol
-      pdftk
-      powertop
-      pulseaudio
-      pv
+      pdf-oxide
+      procs
       pyrefly
       python3
-      #python312Packages.python-lsp-server
       qbittorrent
       retroarch
       ripgrep
       rlwrap
+      rnr
       rust-analyzer
+      rust-parallel
       rustc
       rustfmt
+      sad
       sbctl
       scribus
+      sd
       signal-cli
       signal-desktop
+      skim
       sqlite
-      unzip
+      tailspin
+      tdf
+      tealdeer
+      uutils-coreutils
       vlc
       wezterm
-      wl-clipboard
-      zathura
+      wl-clipboard-rs
+      xcp
+      xh
       zoom-us
     ];
 
@@ -170,23 +184,19 @@
   };
 
   programs = {
+    bat.enable = true;
     neovim = {
       enable = true;
       defaultEditor = true;
     };
-
     noisetorch.enable = true;
-
     regreet.enable = true;
-
     ssh = {
       startAgent = true;
     };
-
     steam.enable = true;
-
     xwayland.enable = true;
-
+    zoxide.enable = true;
     zsh = {
       enable = true;
       autosuggestions.enable = true;
@@ -210,6 +220,12 @@
 
   security = {
     rtkit = {
+      enable = true;
+    };
+    sudo = {
+      enable = false;
+    };
+    sudo-rs = {
       enable = true;
     };
   };
