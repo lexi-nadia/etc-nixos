@@ -205,10 +205,6 @@
         "NO_BEEP"
         "PUSHD_IGNORE_DUPS"
       ];
-      promptInit = ''
-        autoload -U colors && colors && PROMPT="%(?.%?.%{$fg_bold[red]%}%?%{$reset_color%b%}) %{$fg_bold[magenta]%}%n%{$reset_color%b%}@$fg[green]%m%{$reset_color%} %~ %D{%a %b %d %H:%M:%S}
-        \$ "
-      '';
       interactiveShellInit = ''
         bindkey -e
         . /etc/zinputrc

@@ -148,6 +148,11 @@
       '';
     };
 
+    starship = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
     wezterm = {
       enable = true;
       extraConfig = ''
