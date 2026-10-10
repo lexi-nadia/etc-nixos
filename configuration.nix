@@ -196,21 +196,7 @@
     steam.enable = true;
     xwayland.enable = true;
     zoxide.enable = true;
-    zsh = {
-      enable = true;
-      autosuggestions.enable = true;
-      syntaxHighlighting.enable = true;
-      setOptions = lib.mkOptionDefault [
-        "AUTO_PUSHD"
-        "NO_BEEP"
-        "PUSHD_IGNORE_DUPS"
-      ];
-      interactiveShellInit = ''
-        bindkey -e
-        . /etc/zinputrc
-        hash -d nix=/etc/nixos
-      '';
-    };
+    zsh.enable = true;
   };
 
   security = {

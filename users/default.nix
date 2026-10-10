@@ -200,6 +200,21 @@
       '';
     };
 
+    zsh = {
+      enable = true;
+      autosuggestion.enable = true;
+      syntaxHighlighting.enable = true;
+      setOptions = lib.mkOptionDefault [
+        "AUTO_PUSHD"
+        "NO_BEEP"
+        "PUSHD_IGNORE_DUPS"
+      ];
+      initContent = ''
+        bindkey -e
+        . /etc/zinputrc
+        hash -d nix=/etc/nixos
+      '';
+    };
   };
 
   xsession.preferStatusNotifierItems = true;
