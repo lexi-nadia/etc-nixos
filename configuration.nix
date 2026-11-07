@@ -86,13 +86,16 @@
       nodejs
       oculante
       olympus
+      opencode
       oscar
       ouch
       pandoc
       pdf-oxide
       procs
       pyrefly
-      python3
+      (python3.withPackages (ps: with ps; [
+        z3-solver
+      ]))
       qbittorrent
       retroarch
       ripgrep
