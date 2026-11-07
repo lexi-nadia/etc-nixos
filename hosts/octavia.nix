@@ -20,7 +20,6 @@
       luks.devices.root = {
         allowDiscards = true; # enables TRIM, optional.
         device = "/dev/disk/by-uuid/a60efb6d-c3d0-4eda-8b1b-fa70c43f80ef";
-        preLVM = true; # we need to decrypt the physical partition before LVM mounts our logical partitions.
       };
     };
     loader = {

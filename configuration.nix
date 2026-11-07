@@ -7,6 +7,7 @@
 {
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "discord"
+    "discord-unwrapped"
     "steam"
     "steam-unwrapped"
     "zoom-us"
@@ -192,7 +193,6 @@
       defaultEditor = true;
     };
     noisetorch.enable = true;
-    regreet.enable = true;
     ssh = {
       startAgent = true;
     };
@@ -228,6 +228,9 @@
     };
 
     displayManager = {
+      regreet = {
+        enable = true;
+      };
       sddm = {
         enable = true;
         wayland = {
