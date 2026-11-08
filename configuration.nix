@@ -87,11 +87,10 @@
       nodejs
       oculante
       olympus
-      opencode
       oscar
       ouch
       pandoc
-      pdf-oxide
+      #pdf-oxide
       procs
       pyrefly
       (python3.withPackages (ps: with ps; [
@@ -119,6 +118,7 @@
       tealdeer
       uutils-coreutils
       vlc
+      vscodium
       wezterm
       wl-clipboard-rs
       xcp

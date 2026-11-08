@@ -148,6 +148,13 @@
       '';
     };
 
+    opencode = {
+      enable = true;
+      web = {
+        enable = true;
+      };
+    };
+
     starship = {
       enable = true;
       enableZshIntegration = true;
