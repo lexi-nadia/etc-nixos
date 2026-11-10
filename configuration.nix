@@ -68,15 +68,6 @@
       hydra-check
       jujutsu
       kalker
-      kdePackages.kcalc
-      kdePackages.kcharselect
-      kdePackages.kclock
-      kdePackages.kcolorchooser
-      kdePackages.kgpg
-      kdePackages.kolourpaint
-      kdePackages.ksystemlog
-      kdePackages.partitionmanager
-      kdePackages.sddm-kcm
       libreoffice
       lua-language-server
       miro
@@ -157,9 +148,10 @@
     inputMethod = {
       enable = true;
       type = "fcitx5";
+      fcitx5.waylandFrontend = true;
       fcitx5.addons = with pkgs; [
-        fcitx5-mozc
         fcitx5-gtk
+        fcitx5-mozc
       ];
     };
   };
@@ -192,10 +184,8 @@
       enable = true;
       defaultEditor = true;
     };
+    niri.enable = true;
     noisetorch.enable = true;
-    ssh = {
-      startAgent = true;
-    };
     steam.enable = true;
     xwayland.enable = true;
     zoxide.enable = true;
@@ -203,6 +193,14 @@
   };
 
   security = {
+    pam = {
+      u2f = {
+        enable = true;
+        settings = {
+          cue = true;
+        };
+      };
+    };
     rtkit = {
       enable = true;
     };
@@ -219,12 +217,6 @@
       enable = true;
       nssmdns4 = true;
       nssmdns6 = true;
-    };
-
-    desktopManager = {
-      plasma6 = {
-        enable = true;
-      };
     };
 
     displayManager = {

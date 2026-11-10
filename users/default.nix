@@ -160,6 +160,11 @@
       enableZshIntegration = true;
     };
 
+    vicinae = {
+      enable = true;
+      systemd.enable = true;
+    };
+
     wezterm = {
       enable = true;
       extraConfig = ''
@@ -221,6 +226,16 @@
         . /etc/zinputrc
         hash -d nix=/etc/nixos
       '';
+    };
+  };
+
+  services = {
+    awww = {
+      enable = true;
+    };
+
+    wayle = {
+      enable = true;
     };
   };
 
