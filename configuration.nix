@@ -5,35 +5,34 @@
 { lib, pkgs, ... }:
 
 {
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "discord"
-    "discord-unwrapped"
-    "steam"
-    "steam-unwrapped"
-    "zoom-us"
-    "zoom"
-  ];
+  nixpkgs = {
+    config = {
+      allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+        "discord"
+        "discord-unwrapped"
+        "steam"
+        "steam-unwrapped"
+        "zoom-us"
+        "zoom"
+      ];
+    };
 
-  nixpkgs.overlays = [ (final: prev: {
-    inherit (final.lixPackageSets.stable)
-      nixpkgs-review
-      nix-direnv
-      nix-eval-jobs
-      nix-fast-build
-      colmena;
-  }) ];
-
-  boot.kernelPackages = lib.mkIf (lib.versionOlder pkgs.linux.version "6.18.22") (
-    lib.mkDefault pkgs.linuxPackages_6_18
-  );
+    overlays = [ (final: prev: {
+      inherit (final.lixPackageSets.stable)
+        nixpkgs-review
+        nix-direnv
+        nix-eval-jobs
+        nix-fast-build
+        colmena;
+      wfhelper = final.callPackage ./pkgs/wfhelper { };
+    }) ];
+  };
 
   environment = {
     shellAliases = {
       diff = "diff --color";
       grep = "rg";
-      jj-sync = "jj sync; jj evolve";
       less = "less -FRX";
-      ls = "lsd";
       nfu = "nix flake update";
       nrs = "nixos-rebuild switch --sudo --keep-going";
       ps = "ps -eHo 'pid,stime,euser,cmd'";
@@ -54,6 +53,7 @@
       dua
       dust
       element-desktop
+      emmylua-ls
       exiftool
       fd
       fend
@@ -66,7 +66,6 @@
       hexyl
       huniq
       hydra-check
-      jujutsu
       kalker
       libreoffice
       lua-language-server
@@ -92,6 +91,7 @@
       ripgrep
       rlwrap
       rnr
+      ruff
       rust-analyzer
       rust-parallel
       rustc
@@ -107,13 +107,16 @@
       tailspin
       tdf
       tealdeer
+      tree-sitter
       uutils-coreutils
       vlc
       vscodium
       wezterm
+      wfhelper
       wl-clipboard-rs
       xcp
       xh
+      xwayland-satellite
       zoom-us
     ];
 
@@ -161,21 +164,18 @@
     networkmanager.enable = true;
   };
 
-  systemd = {
-    network = {
-      enable = true;
-      wait-online.enable = false;
-    };
-  };
-
   nix = {
     package = pkgs.lixPackageSets.stable.lix;
-    settings.allowed-users = [
-      "@wheel"
-    ];
-    extraOptions = ''
-      extra-experimental-features = auto-allocate-uids flakes nix-command
-    '';
+    settings = {
+      allowed-users = [
+        "@wheel"
+      ];
+      experimental-features = [
+        "auto-allocate-uids"
+        "flakes"
+        "nix-command"
+      ];
+    };
   };
 
   programs = {
@@ -201,15 +201,10 @@
         };
       };
     };
-    rtkit = {
-      enable = true;
-    };
-    sudo = {
-      enable = false;
-    };
-    sudo-rs = {
-      enable = true;
-    };
+    rtkit.enable = true;
+    sudo.enable = false;
+    sudo-rs.enable = true;
+    tpm2.enable = true;
   };
 
   services = {
@@ -256,6 +251,13 @@
     # Before changing this value read the documentation for this option
     # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
     stateVersion = "22.11"; # Did you read the comment?
+  };
+
+  systemd = {
+    network = {
+      enable = true;
+      wait-online.enable = false;
+    };
   };
 
   time.timeZone = "America/New_York";

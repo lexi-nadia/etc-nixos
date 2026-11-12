@@ -1,8 +1,4 @@
 {
-  config,
-  lib,
-  pkgs,
-  modulesPath,
   ...
 }:
 
@@ -17,25 +13,34 @@
         "usb_storage"
         "sd_mod"
       ];
-      kernelModules = [ "dm-snapshot" ];
+      kernelModules = [
+        "dm-snapshot"
+      ];
       luks.devices.root = {
         allowDiscards = true; # enables TRIM, optional.
         device = "/dev/disk/by-uuid/cc36d4e6-9d18-4d81-9dc2-ad81118d42bd";
       };
     };
+    kernelModules = [
+      "kvm-intel"
+    ];
     loader = {
       timeout = 15;
       efi.canTouchEfiVariables = true;
-      grub = {
+      systemd-boot = {
         enable = true;
-        default = "saved";
-        device = "nodev";
-        efiSupport = true;
-        useOSProber = true;
+        editor = false;
+        windows."windows" = {
+          title = "Windows";
+          efiDeviceHandle = "HD0b";
+          sortKey = "z0";
+        };
+        edk2-uefi-shell = {
+          enable = true;
+          sortKey = "z1";
+        };
       };
     };
-    kernelModules = [ "kvm-intel" ];
-    extraModulePackages = [ ];
   };
 
   fileSystems = {
@@ -49,19 +54,8 @@
     };
   };
 
-  swapDevices = [
-    { device = "/dev/disk/by-uuid/1d2005c7-6f48-4cc5-956a-8d33ff652852"; }
-  ];
-
-  powerManagement = {
-    cpuFreqGovernor = "ondemand";
-  };
-
   hardware = {
-    bluetooth = {
-      enable = true;
-      powerOnBoot = true;
-    };
+    bluetooth.enable = true;
     enableRedistributableFirmware = true;
     cpu.intel.updateMicrocode = true;
   };
@@ -69,4 +63,12 @@
   networking = {
     hostName = "umi";
   };
+
+  powerManagement = {
+    cpuFreqGovernor = "ondemand";
+  };
+
+  swapDevices = [
+    { device = "/dev/disk/by-uuid/1d2005c7-6f48-4cc5-956a-8d33ff652852"; }
+  ];
 }

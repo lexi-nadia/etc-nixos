@@ -2,10 +2,16 @@
 
 {
   home = {
-    stateVersion = "23.05";
+    stateVersion = "26.05";
   };
 
   programs = {
+    difftastic = {
+      enable = true;
+      git.enable = true;
+      jujutsu.enable = true;
+    };
+
     git = {
       enable = true;
       settings = {
@@ -41,64 +47,25 @@
       };
     };
 
-    mercurial = {
+    jujutsu = {
       enable = true;
-      aliases = {
-        vi = "vimdiff";
-        vim = "vimdiff";
-      };
-      userEmail = "me@lexibromfield.com";
-      userName = "lexi";
-      extraConfig = {
-        ui = {
-          merge = "vimdiff";
-        };
-        extensions = {
-          "beautifygraph" = "";
-          "hgext.extdiff" = "";
-        };
-        extdiff = {
-          "cmd.vimdiff" = "${pkgs.neovim}/bin/nvim";
-          "opts.vimdiff" = "-d";
-          "cmd.dirdiff" = "${pkgs.neovim}/bin/nvim";
-          "opts.dirdiff" = "-f '+next' '+execute \"DirDiff\" fnameescape(argv(0)) fnameescape(argv(1))'";
-        };
-        merge-tools = {
-          "vimdiff.executable" = "${pkgs.neovim}/bin/nvim";
-          "vimdiff.args" = ''-f -d $output -M $local $base $other -c "wincmd J" -c "set modifiable" -c "set write"'';
-          "vimdiff.premerge" = "keep";
-        };
-        experimental = {
-          "revisions.prefixhexnode" = "yes";
-        };
-        color = {
-          "changeset.shortest" = "bold underline cyan";
-        };
-        alias = {
-          pvimdiff = "vimdiff -r .~1";
-        };
+      settings = {
+        name = "Lexi Bromfield";
+        email = "me@lexibromfield.com";
       };
     };
 
     neovim = {
       enable = true;
-      withPython3 = false;
-      withRuby = false;
+      defaultEditor = true;
       viAlias = true;
       vimAlias = true;
       vimdiffAlias = true;
       plugins = with pkgs.vimPlugins; [
-        dracula-vim
-        lazydev-nvim
+        catppuccin-nvim
         nvim-lspconfig
-        rust-vim
-        vim-better-whitespace
-        vim-dirdiff
-        vim-html-template-literals
-        vim-javascript
-        vim-nix
-        vim-unimpaired
-        vim-wayland-clipboard
+				nvim-treesitter.withAllGrammars
+        rustaceanvim
       ];
       initLua = ''
         -- Mappings.
@@ -110,9 +77,10 @@
         vim.keymap.set("n", "<space>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 
         vim.lsp.enable('denols')
-        vim.lsp.enable('lua_ls')
+        vim.lsp.enable('emmylua_ls')
         vim.lsp.enable('nixd')
         vim.lsp.enable('pyrefly')
+        vim.lsp.enable('ruff')
         vim.lsp.enable('rust_analyzer')
 
         vim.opt.ignorecase = true
@@ -127,8 +95,6 @@
         vim.opt.modeline = false -- for security
         vim.opt.scrolloff = 3
         vim.opt.sidescrolloff = 30
-        vim.g.loaded_perl_provider = false
-        vim.g.dracula_colorterm = false
         vim.g.strip_whitespace_on_save = true
         vim.g.strip_whitespace_confirm = false
         vim.g.strip_whitelines_at_eof = true
@@ -138,7 +104,7 @@
         }
 
         vim.api.nvim_command([[autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | endif]])
-        vim.api.nvim_command('colorscheme dracula')
+        vim.api.nvim_command('colorscheme catppuccin-mocha')
 
         -- Jump to the last position.
         vim.api.nvim_command([[autocmd BufReadPost * if line2byte(line("$") + 1) <= 1000000 && line("'\"") >= 1 && line("'\"") <= line("$") | execute 'normal! g`"' | endif]])
@@ -150,9 +116,7 @@
 
     opencode = {
       enable = true;
-      web = {
-        enable = true;
-      };
+      web.enable = true;
     };
 
     starship = {
@@ -170,20 +134,13 @@
       extraConfig = ''
         local wezterm = require 'wezterm'
         return {
-          color_scheme = 'Dracula',
+          color_scheme = 'catppuccin-mocha',
           font = wezterm.font 'FiraCode Nerd Font',
           font_size = 10.0,
           hide_tab_bar_if_only_one_tab = true,
           xcursor_theme = 'Vanilla-DMZ',
           xcursor_size = 32,
           front_end = "WebGpu",
-
-          hyperlink_rules = {
-            {
-              regex = [[\b(http|https)://[\w.-]+\S*\b]],
-              format = '$0',
-            },
-          },
 
           mouse_bindings = {
             -- Change the default click behavior so that it only selects
